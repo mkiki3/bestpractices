@@ -1,24 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
+
+import classNames from 'classnames';
+
 import './App.css';
+import Button from './Button';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className=''>
+      <Button
+        className={classNames(' text-white bg-pink-500')}
+        borderRadius='rounded-full'
+        size='default'
+      />
+      <div className='border p-3'>
+        <Button
+          className={classNames(' text-white bg-pink-500 right-8')}
+          borderRadius='rounded-full'
+          size='default'
+        />
+      </div>
     </div>
   );
 }
