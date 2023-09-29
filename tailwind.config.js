@@ -3,7 +3,11 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        cookie_banner: 'url(/CookieBanner.svg)',
+      },
+    },
     colors: {
       gold: {
         50: 'rgba(214, 176, 100, 0.05)',
@@ -112,6 +116,7 @@ module.exports = {
         50: '#FEF7EE',
         100: '#FDEFDD',
         200: '#FCDFBB',
+        259: 'E9C239',
         300: '#FAD099',
         400: '#F9C077',
         500: '#F7B055',
