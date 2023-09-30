@@ -1,11 +1,16 @@
 import React from 'react';
 
-const Star: React.FC = () => {
+interface StarProps {
+  width: number;
+  height: number;
+}
+
+const Star: React.FC<StarProps> = ({ width, height }: StarProps) => {
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
-      width='24'
-      height='24'
+      width={width}
+      height={height}
       viewBox='0 0 24 24'
       fill='#E9C239'
       stroke='#E9C239'

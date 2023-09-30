@@ -6,7 +6,7 @@ import 'swiper/swiper-bundle.css';
 // import { useSwiper } from 'swiper/react';
 import { Swiper as SwiperType } from 'swiper';
 
-import { Button, CarouselCard } from '../Component';
+import { Button, CarouselCard, Star } from '../Component';
 
 import Banner from '../images/banner.svg';
 import CookieBasket from '../images/cookie_basket.svg';
@@ -14,6 +14,7 @@ import CookieRecipe from '../images/cookie_recipe.svg';
 import Cookie from '../images/dark_chocolate_cookie.png';
 import LeftArrowCircle from '../images/arrow-left-circle.svg';
 import RightArrowCircle from '../images/arrow-right-circle.svg';
+import Profile from '../images/profilepic.svg';
 
 const Playground: React.FC = () => {
   const stars = [
@@ -29,6 +30,13 @@ const Playground: React.FC = () => {
     false,
   ];
 
+  const reviews = [
+    'Ariene McCoy',
+    'Alexis Jones',
+    'Zack Wilson',
+    'Amber Lee',
+    'Chris Fields',
+  ];
   const swiperRef = useRef<SwiperType>(null);
 
   const goNext = () => {
@@ -154,6 +162,38 @@ const Playground: React.FC = () => {
         <div className='cookie-basket'>
           <img src={CookieBasket} className='w-full my-32' />
         </div>
+        {/** Customer Reviews */}
+        <Swiper
+          loop={true}
+          spaceBetween={20}
+          slidesPerView={4}
+          pagination={{ clickable: true }}
+          // onSlideChange={() => console.log('slide change')}
+        >
+          {reviews.map((x: string, index: number) => (
+            <SwiperSlide key={index} className='bg-transparent ml-6'>
+              <div className='bg-pink-150 p-5'>
+                <div className='w-3/4 mb-7'>
+                  “The workers are amazing and so helpful. The cookies were
+                  delicious”
+                </div>
+                <div className='flex w-3/4'>
+                  <img src={Profile} className='h-20' />
+                  <div className='ml-3 mt-2'>
+                    <div className='font-bold'>{x}</div>
+                    <div className='text-grey-300'>Happy Customer</div>
+                    <div className='flex justify-between'>
+                      {reviews.map((x: unknown, index: number) => (
+                        <Star key={index} width={18} height={18} />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
         <div className='cookie-recipe relative'>
           <img src={CookieRecipe} className='w-full my-32' />
 

@@ -18,7 +18,7 @@ const CarouselCard: React.FC = () => {
       <div className='flex justify-between  m-auto w-9/12 my-6'>
         {star.map((x: unknown, index: number) => (
           <div key={index}>
-            <Star />
+            <Star width={24} height={24} />
           </div>
         ))}
       </div>
@@ -30,7 +30,7 @@ const CarouselCard: React.FC = () => {
         <div>
           <Button
             className={classNames(
-              '  rounded-3xl border-1 border-pink-250 text-pink-250 '
+              '  rounded-3xl border-1 border-pink-250 text-pink-250  hover:text-white hover:bg-pink-250'
             )}
             size='small'
             text='Add to cart'
