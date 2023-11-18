@@ -7,6 +7,7 @@ import Contact from './Pages/Contact';
 import Cart from './Pages/Cart';
 import FAQ from './Pages/FAQ';
 import Playground from './Pages/Playground';
+import Playground2 from './Pages/Playground2';
 const RoutesPage: React.FC = () => {
   return (
     <Router>
@@ -19,6 +20,7 @@ const RoutesPage: React.FC = () => {
           <Route path='/cart' element={<Cart />}></Route>
           <Route path='/faq' element={<FAQ />}></Route>
           <Route path='/playground' element={<Playground />}></Route>
+          <Route path='/playground2' element={<Playground2 />}></Route>
         </Routes>
       </>
     </Router>
