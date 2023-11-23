@@ -1,3 +1,28 @@
+/**
+ * scrollTop: This property represents the number of pixels that the content of an element is scrolled vertically.
+ *  For example, if the content is scrolled to the very top, scrollTop will be 0. As the user scrolls down, scrollTop will increase.
+
+clientHeight: This property represents the height of the viewport in the browser, excluding the browser's
+ chrome (such as the address bar, navigation buttons, etc.). It essentially gives you the height of the visible 
+ content area within the browser window.
+
+ clientHeight:
+
+Represents the height of the visible content area of an element.
+Includes the height of the content, excluding padding, border, and margin.
+Essentially, it gives you the height of the part of the element that is currently visible in the viewport.
+scrollHeight:
+
+Represents the total height of the content area, including the portions that are currently hidden due to overflow and not visible in the viewport.
+Includes the height of the content, padding, and potentially the height of any horizontal scrollbar (if it's present and affecting the layout).
+It represents the full height of the content, whether it's currently visible or not.
+   10 +  212 = 222 >= 500 -200  => 222 >= 300
+if (scrollTop + clientHeight >= scrollHeight - 200 && !loading) {
+  // Load more items when the user is near the bottom
+  setPage((prevPage) => prevPage + 1);
+}
+ */
+
 import React, {
   ChangeEvent,
   useEffect,
@@ -11,6 +36,8 @@ const FAQ: React.FC = () => {
   const myElementRef = useRef<HTMLDivElement>(null);
   const inputValueRef = useRef<string>('');
   const [scrollHeight, setScrollHeight] = useState<number>(0);
+  const [scrollTop, setNewScrollTop] = useState<number>(0);
+  const [clientHeight, setClientHeight] = useState<number>(0);
   const [list, setList] = useState<string[]>([
     'Chris',
     'Alex',
@@ -26,9 +53,9 @@ const FAQ: React.FC = () => {
 
   const updateScrollHeight = () => {
     if (myElementRef.current) {
-      const newScrollHeight = myElementRef.current.scrollHeight;
-      console.log('Scroll Height:', newScrollHeight);
-      setScrollHeight(newScrollHeight);
+      setScrollHeight(myElementRef.current.scrollHeight);
+      setNewScrollTop(myElementRef.current.scrollTop);
+      setClientHeight(myElementRef.current.clientHeight);
     }
   };
 
@@ -45,13 +72,16 @@ const FAQ: React.FC = () => {
   const memoizedUserList = useMemo(updateUser, [list]);
 
   return (
-    <>
+    <div className='container123 bg-pink-250'>
       <div className='border-4 mb-22 bg-orange-200'>
         <input type='text' onChange={handleInputChange} />
         <button onClick={addUser}>Submit</button>
       </div>
       <div>
-        <p>Scroll Height: {scrollHeight}</p>
+        <p>
+          Scroll Height: {scrollHeight} {''} ScrollTop: {scrollTop} {''}
+          ClientHeight: {clientHeight}
+        </p>
       </div>
 
       <div
@@ -63,11 +93,10 @@ const FAQ: React.FC = () => {
       >
         {memoizedUserList}
       </div>
-    </>
+    </div>
   );
 
   function updateUser() {
-    console.log('Updating user list');
     return list.map((user, index) => (
       <div key={index} className='border p-4 mb-4'>
         {user}
