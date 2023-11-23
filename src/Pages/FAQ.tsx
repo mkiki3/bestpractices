@@ -21,6 +21,11 @@ if (scrollTop + clientHeight >= scrollHeight - 200 && !loading) {
   // Load more items when the user is near the bottom
   setPage((prevPage) => prevPage + 1);
 }
+scrollTop: The number of pixels that the content of the container is scrolled vertically.
+
+clientHeight: The height of the container's content area in pixels, including padding but not the scrollbar.
+
+scrollHeight: The total height of the container, including padding and the height of any potential scrollbar.
  */
 
 import React, {
@@ -35,17 +40,27 @@ import classNames from 'classnames';
 const FAQ: React.FC = () => {
   const myElementRef = useRef<HTMLDivElement>(null);
   const inputValueRef = useRef<string>('');
-  const [scrollHeight, setScrollHeight] = useState<number>(0);
-  const [scrollTop, setNewScrollTop] = useState<number>(0);
-  const [clientHeight, setClientHeight] = useState<number>(0);
+  const [scrollInfo, setScrollInfo] = useState({
+    scrollHeight: 0,
+    scrollTop: 0,
+    clientHeight: 0,
+  });
   const [list, setList] = useState<string[]>([
     'Chris',
     'Alex',
     'Brittney',
     'Ciara',
     'Tyler',
-    'Jay',
+    // 'Jay',
+    // 'Mia',
+    // 'Shawna',
+    // 'Larry',
+    // 'Jackson',
+    // 'Michael',
+    // 'Juan',
   ]);
+  // const [pageNumber, setPageNumber] = useState(1);
+  // const pageSize = 3;
 
   useEffect(() => {
     updateScrollHeight();
@@ -53,9 +68,17 @@ const FAQ: React.FC = () => {
 
   const updateScrollHeight = () => {
     if (myElementRef.current) {
-      setScrollHeight(myElementRef.current.scrollHeight);
-      setNewScrollTop(myElementRef.current.scrollTop);
-      setClientHeight(myElementRef.current.clientHeight);
+      const { scrollHeight, scrollTop, clientHeight } = myElementRef.current;
+      setScrollInfo({ scrollHeight, scrollTop, clientHeight });
+    }
+
+    console.log('before', scrollInfo.scrollTop + scrollInfo.clientHeight);
+    if (
+      scrollInfo.scrollTop + scrollInfo.clientHeight >=
+      scrollInfo.scrollHeight - 200
+    ) {
+      console.log('left', scrollInfo.scrollTop + scrollInfo.clientHeight);
+      // Add your logic to load more items here
     }
   };
 
@@ -79,8 +102,9 @@ const FAQ: React.FC = () => {
       </div>
       <div>
         <p>
-          Scroll Height: {scrollHeight} {''} ScrollTop: {scrollTop} {''}
-          ClientHeight: {clientHeight}
+          Scroll Height: {scrollInfo.scrollHeight} {''} ScrollTop:{' '}
+          {scrollInfo.scrollTop} {''}
+          ClientHeight: {scrollInfo.clientHeight}
         </p>
       </div>
 
@@ -103,6 +127,16 @@ const FAQ: React.FC = () => {
       </div>
     ));
   }
+
+  // function updateUser2() {
+  //   const startIndex = (pageNumber - 1) * pageSize;
+  //   const endIndex = startIndex + pageSize;
+  //   return list.slice(startIndex, endIndex).map((user, index) => (
+  //     <div key={index} className='border p-4 mb-2'>
+  //       {user}
+  //     </div>
+  //   ));
+  // }
 };
 
 export default FAQ;
