@@ -9,6 +9,7 @@ const FAQ: React.FC = () => {
     scrollTop: 0,
     clientHeight: 0,
   });
+  const [loading, setLoading] = useState(false);
   /**
    * The slice function is used to create a shallow copy of a portion of the
    *  users array. In this case, it's creating a copy of the first 4 items
@@ -24,7 +25,10 @@ const FAQ: React.FC = () => {
     }
   };
 
-  const fetchMoreUsers = useCallback(() => {
+  const fetchMoreUsers = useCallback(async () => {
+    setLoading(true);
+    // Simulating fetching more users with a delay (you can replace this with an actual API call)
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     // Simulating fetching more users
     const newUsers = users.slice(
       visibleUsers.length,
@@ -32,6 +36,7 @@ const FAQ: React.FC = () => {
     );
     console.log(newUsers);
     setVisibleUsers((prevUsers) => [...prevUsers, ...newUsers]);
+    setLoading(false);
   }, [visibleUsers]);
 
   const handleScroll = () => {
@@ -62,11 +67,12 @@ const FAQ: React.FC = () => {
           )}
           ref={myElementRef}
         >
-          {visibleUsers.map((x: string) => (
-            <div key={x} className={classNames('p-2 border')}>
+          {visibleUsers.map((x: string, index: number) => (
+            <div key={index} className={classNames('p-2 border')}>
               {x}
             </div>
           ))}
+          {loading && <div>Loading...</div>}
         </div>
       </div>
     </div>
