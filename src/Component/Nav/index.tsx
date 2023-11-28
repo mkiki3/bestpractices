@@ -21,10 +21,14 @@ const Nav: React.FC = () => {
   ];
   return (
     <div className='flex justify-start'>
-      <img className='px-4' src={Menu} onClick={handleModal} />
-      <Sidebar showSidebar={showSidebar} onClose={handleModal} />
+      <img className='px-4 md:hidden' src={Menu} onClick={handleModal} />
+      <Sidebar
+        showSidebar={showSidebar}
+        navItems={navItems}
+        onClose={handleModal}
+      />
       {navItems.map((x, id) => (
-        <div key={id} className='px-2'>
+        <div key={id} className='px-2 hidden md:block'>
           <Link
             to={{
               pathname: x.path,

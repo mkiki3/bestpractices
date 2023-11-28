@@ -1,13 +1,20 @@
 import React from 'react';
 
 import classNames from 'classnames';
+import { navProps } from '../../types/navtypes';
+import { Link } from 'react-router-dom';
 
 interface SidebarProps {
   showSidebar: boolean;
+  navItems: navProps[];
   onClose: () => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ showSidebar, onClose }) => {
+const Sidebar: React.FC<SidebarProps> = ({
+  showSidebar,
+  navItems,
+  onClose,
+}) => {
   return (
     <div
       className={classNames(
@@ -21,10 +28,17 @@ const Sidebar: React.FC<SidebarProps> = ({ showSidebar, onClose }) => {
       <div className='absolute top-4 right-4' onClick={onClose}>
         X
       </div>
-      <div>Home</div>
-      <div>About</div>
-      <div>FAQ</div>
-      <div>Contact</div>
+      {navItems.map((x, id) => (
+        <div key={id} className='px-2'>
+          <Link
+            to={{
+              pathname: x.path,
+            }}
+          >
+            {x.name}
+          </Link>
+        </div>
+      ))}
       <button onClick={onClose}>Close</button>
     </div>
   );
