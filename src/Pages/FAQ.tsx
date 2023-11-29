@@ -8,18 +8,22 @@ const FAQ: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const pageSize = 3;
 
-  const fetchMoreUsers = useCallback(async () => {
+  const fetchMoreUsers = useCallback((): Promise<void> => {
     setLoading(true);
-    // Simulating fetching more users with a delay (you can replace this with an actual API call)
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    // Simulating fetching more users
-    const newUsers = users.slice(
-      visibleUsers.length,
-      visibleUsers.length + pageSize
-    );
-    console.log(newUsers);
-    setVisibleUsers((prevUsers) => [...prevUsers, ...newUsers]);
-    setLoading(false);
+
+    return new Promise<void>((resolve) => {
+      // Simulating fetching more users with a delay (you can replace this with an actual API call)
+      setTimeout(() => {
+        const newUsers = users.slice(
+          visibleUsers.length,
+          visibleUsers.length + pageSize
+        );
+        console.log(newUsers);
+        setVisibleUsers((prevUsers) => [...prevUsers, ...newUsers]);
+        setLoading(false);
+        resolve(); // Resolve the promise after updating the state
+      }, 1000);
+    });
   }, [visibleUsers]);
 
   const { myElementRef, scrollInfo, handleScroll } =
