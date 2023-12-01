@@ -3,19 +3,20 @@ import React, { useRef } from 'react';
 import classNames from 'classnames';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
-// import { useSwiper } from 'swiper/react';
 import { Swiper as SwiperType } from 'swiper';
 
-import { Button, CarouselCard, Star } from '../Component';
+import { Button, CarouselCard } from '../Component';
 
 import Banner from '../images/banner.svg';
 import CookieBasket from '../images/cookie_basket.svg';
-import CookieRecipe from '../images/cookie_recipe.svg';
 import Cookie from '../images/dark_chocolate_cookie.png';
 import LeftArrowCircle from '../images/arrow-left-circle.svg';
 import RightArrowCircle from '../images/arrow-right-circle.svg';
-import Profile from '../images/profilepic.svg';
-import Box from '../images/box.svg';
+import Sampler from '../Component/Sampler';
+import Review from '../Component/Review';
+import DownloadApp from '../Component/DownloadApp';
+import Section from '../Component/Section';
+import Info from '../Component/Info';
 
 const Playground: React.FC = () => {
   const stars = [
@@ -31,13 +32,6 @@ const Playground: React.FC = () => {
     false,
   ];
 
-  const reviews = [
-    'Ariene McCoy',
-    'Alexis Jones',
-    'Zack Wilson',
-    'Amber Lee',
-    'Chris Fields',
-  ];
   const swiperRef = useRef<SwiperType>(null);
 
   const goNext = () => {
@@ -160,164 +154,23 @@ const Playground: React.FC = () => {
         </div>
 
         {/**Section Pack */}
-        <div className='flex my-32 border'>
-          <div className='bg-pink-250 text-5xl border font-bold m-auto'>
-            Class Sampler
-          </div>
-          <div className='bg-pink-250 text-5xl border font-bold m-auto'>
-            Class Sampler
-          </div>
-          <div className='bg-pink-250 text-5xl border font-bold m-auto'>
-            Class Sampler
-          </div>
-          <div className='bg-pink-250 text-5xl border font-bold m-auto'>
-            Class Sampler
-          </div>
-        </div>
-        {/**Section */}
-        <div className='flex  mt-48'>
-          <div className='flex border justify-center w-full text-white'>1 </div>
-          <div className=' flex-col w-full'>
-            <div className='space-y-8 mb-8'>
-              <div>
-                <div className='text-5xl font-bold'>Eating well should</div>
-                <div className='bg-pink-250 text-5xl font-bold w-1/3'>
-                  Taste good
-                </div>
-              </div>
-
-              <div className='text-3xl w-3/4'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </div>
-            </div>
-            <div className='grid grid-cols-2 w-full '>
-              <div className='flex space-x-4'>
-                <img src={Box} />
-                <div className='text-3xl'>Online Order</div>
-              </div>
-              <div className='flex space-x-4'>
-                <img src={Box} />
-                <div className='text-3xl'>Online Order</div>
-              </div>
-              <div className='flex space-x-4'>
-                <img src={Box} />
-                <div className='text-3xl'>Online Order</div>
-              </div>
-              <div className='flex space-x-4'>
-                <img src={Box} />
-                <div className='text-3xl'>Online Order</div>
-              </div>
-              <div className='flex space-x-4'>
-                <img src={Box} />
-                <div className='text-3xl'>Online Order</div>
-              </div>
-              <div className='flex space-x-4'>
-                <img src={Box} />
-                <div className='text-3xl'>Online Order</div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <Sampler />
 
         {/**Image */}
-        <div className='cookie-basket'>
-          <img src={CookieBasket} className='w-full my-32' />
+        <div className='cookie-basket '>
+          <img src={CookieBasket} className='w-full my-64' />
         </div>
-
-        {/** Customer Reviews */}
-        <div className='flex text-pink-250 m-auto my-12 mb-20'>
-          <div className='text-4xl  font-bold w-full flex justify-center '>
-            <div className='w-2/5'> Kind word from our customers</div>
-          </div>
-          <div className='text-2xl  w-full flex'>
-            <div className='w-1/2'>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor
-            </div>
-          </div>
-        </div>
-        <Swiper
-          loop={true}
-          spaceBetween={20}
-          slidesPerView={4}
-          pagination={{ clickable: true }}
-        >
-          {reviews.map((x: string, index: number) => (
-            <SwiperSlide key={index} className='bg-transparent ml-6'>
-              <div className='bg-pink-150 p-5'>
-                <div className='w-3/4 mb-7'>
-                  “The workers are amazing and so helpful. The cookies were
-                  delicious”
-                </div>
-                <div className='flex w-3/4'>
-                  <img src={Profile} className='h-20' />
-                  <div className='ml-3 mt-2'>
-                    <div className='font-bold'>{x}</div>
-                    <div className='text-grey-300'>Happy Customer</div>
-                    <div className='flex justify-between'>
-                      {reviews.map((x: unknown, index: number) => (
-                        <Star key={index} width={18} height={18} />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
 
         {/**Section */}
-        <div className='flex my-20 mt-36'>
-          <div className='flex justify-end'>
-            <img src={CookieBasket} className=' rounded-xl w-3/4' />
-          </div>
-          <div className='w-full pl-16'>
-            <div className='space-y-20'>
-              <div>
-                <div className='text-5xl font-bold'>Eating well should</div>
-                <div className='bg-pink-250 text-5xl font-bold w-1/3'>
-                  Taste good
-                </div>
-              </div>
+        <Info />
 
-              <div className='text-4xl w-11/12 '>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </div>
-            </div>
-          </div>
-        </div>
+        {/** Customer Reviews */}
+        <Review />
 
-        <div className='cookie-recipe relative mt-48'>
-          <img src={CookieRecipe} className='w-full my-32' />
-
-          <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full'>
-            <div className='text-white text-4xl font-bold text-center'>
-              Download the app now.
-            </div>
-            <div className='text-white text-xl font-light text-center my-8'>
-              Available on your favorite store. Start yor premium experience now{' '}
-            </div>
-            <div className='flex justify-between m-auto w-56 '>
-              <Button
-                className={classNames(
-                  ' text-white bg-pink-250 rounded-lg border-0'
-                )}
-                size='default'
-                text='Playstore'
-              />
-              <Button
-                className={classNames(
-                  ' text-white border-1 border-white  rounded-lg '
-                )}
-                size='default'
-                text='App store'
-                variant='outlined'
-              />
-            </div>
-          </div>
-        </div>
+        {/**Section */}
+        <Section />
+        {/*Download App */}
+        <DownloadApp />
       </div>
 
       {/**Mobile */}
