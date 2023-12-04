@@ -29,7 +29,7 @@ export const faq = [
       ' If youre unhappy with your purchase for any reason, email us within 90 days and well refund you in full, no questions asked.',
   },
   {
-    question: 'Do you offer custom cake orders for special occasions?',
+    question: 'Do you offer custom cookie orders for special occasions?',
     answer: 'yes',
   },
   {
@@ -38,7 +38,7 @@ export const faq = [
   },
   {
     question:
-      'How far in advance should I place an order for a custom cake?    ',
+      'How far in advance should I place an order for a custom cookie?    ',
     answer:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien ligula, sagittis non neque in.',
   },
@@ -59,7 +59,7 @@ export const faq = [
   },
   {
     question:
-      'Can I schedule a tasting for wedding cakes or other large orders?',
+      'Can I schedule a tasting for seasonal cookies or other large orders?',
     answer:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sapien ligula, sagittis non neque in.',
   },
