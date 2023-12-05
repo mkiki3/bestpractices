@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 
-import { Link } from 'react-router-dom';
 import { Disclosure } from '@headlessui/react';
 import {
   ChevronUpIcon,
@@ -9,9 +8,33 @@ import {
 } from '@heroicons/react/20/solid';
 
 import { faq } from '../data';
-import { faqProp } from '../types/faq';
+import { FAQProp } from '../types/faq';
+import { Button } from '../Component';
 
 const FAQ: React.FC = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [selected, setSelected] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    comment: '',
+  });
+
+  const titleItems = ['General', 'Payments', 'Returns', 'Refunds'];
+
+  const handleInputChange = (
+    e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log('Submitted data:', formData);
+    // Add your logic for handling the form data here
+  };
+
   return (
     <>
       <div className='flex flex-col  items-center'>
@@ -21,26 +44,19 @@ const FAQ: React.FC = () => {
         </div>
         {/**Menu */}
         <div className='flex justify-between w-1/4 mb-10 '>
-          <span className='hover:border hover:border-white hover:border-b-pink-500 pb-1'>
-            <Link to='/faq'>General</Link>
-          </span>
-          <span className='hover:border hover:border-white hover:border-b-pink-500 pb-1'>
-            <Link to='/faq'>Service</Link>
-          </span>
-          <span className='hover:border hover:border-white hover:border-b-pink-500 pb-1'>
-            <Link to='/faq'>Payment</Link>
-          </span>
-          <span className='hover:border hover:border-white hover:border-b-pink-500 pb-1'>
-            <Link to='/faq'>Refund</Link>
-          </span>
-          <span className='hover:border hover:border-white hover:border-b-pink-500 pb-1'>
-            <Link to='/faq'>Return</Link>
-          </span>
+          {titleItems.map((x: string, idx: number) => (
+            <span
+              key={idx}
+              className='hover:border hover:border-white hover:border-b-pink-500 pb-1'
+            >
+              <Button text={x} onClick={() => setSelected(x)} />
+            </span>
+          ))}
         </div>
       </div>
 
       <div className='mx-auto w-1/2 rounded-2xl bg-white p-2 '>
-        {faq.map((x: faqProp, index: number) => (
+        {faq.map((x: FAQProp, index: number) => (
           <Disclosure key={index}>
             {({ open }) => (
               <>
@@ -81,6 +97,37 @@ const FAQ: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/**Add a Review */}
+      <div className='text-pink-600 mx-auto w-1/2 mt-12 font-semibold text-xl mb-4'>
+        Add a review
+      </div>
+      <form
+        onSubmit={handleSubmit}
+        className='grid grid-cols-2 mx-auto w-1/2 gap-6'
+      >
+        <input
+          name='name'
+          className='border rounded-lg p-3'
+          onChange={handleInputChange}
+        />
+        <input
+          name='email'
+          className='border rounded-lg p-3'
+          onChange={handleInputChange}
+        />
+        <textarea
+          name='comment'
+          className='col-span-2 line-clamp-4 border rounded-lg p-3 mt-4 h-52'
+          onChange={handleInputChange}
+        />
+        <Button
+          className='col-span-2 flex justify-center mb-8 bg-pink-300 w-1/4 mx-auto p-3 rounded-lg'
+          text='Submit'
+          type='submit'
+          variant='secondary'
+        />
+      </form>
     </>
   );
 };

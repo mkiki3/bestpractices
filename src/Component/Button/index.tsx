@@ -1,13 +1,5 @@
 import React from 'react';
 import classNames from 'classnames';
-/**
- *  <Button
-        className={classNames(' text-white bg-pink-500')}
-        borderRadius='rounded-full'
-        size='default'
-      />
- */
-
 interface ButtonProps extends React.ComponentProps<'button'> {
   children?: React.ReactNode;
   className?: string;
@@ -19,6 +11,8 @@ interface ButtonProps extends React.ComponentProps<'button'> {
   icon?: React.ReactNode;
   loading?: boolean;
   text?: string;
+  type?: 'submit' | 'button' | 'reset';
+  onClick?: () => void;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -28,9 +22,12 @@ const Button: React.FC<ButtonProps> = ({
   variant,
   icon,
   iconPosition,
+  type,
+  onClick,
 }) => {
   return (
     <button
+      onClick={onClick}
       className={classNames(
         'flex items-center min-w-[64px]  hover:opacity-80',
         {
@@ -42,6 +39,7 @@ const Button: React.FC<ButtonProps> = ({
           [`${className}`]: className,
         }
       )}
+      type={type}
     >
       {icon && iconPosition === 'left' && icon}
       {text}
