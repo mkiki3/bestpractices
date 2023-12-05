@@ -56,25 +56,27 @@ const FAQ: React.FC = () => {
       </div>
 
       <div className='mx-auto w-1/2 rounded-2xl bg-white p-2 '>
-        {faq.map((x: FAQProp, index: number) => (
-          <Disclosure key={index}>
-            {({ open }) => (
-              <>
-                <Disclosure.Button className='flex w-full justify-between rounded-lg bg-pink-100 px-4 py-2 my-3 text-left text-sm font-medium text-purple-900 hover:bg-pink-200 focus:outline-none focus-visible:ring focus-visible:ring-pink-500/75'>
-                  <span>{x.question}</span>
-                  <ChevronUpIcon
-                    className={`${
-                      open ? 'rotate-180 transform' : ''
-                    } h-5 w-5 text-black`}
-                  />
-                </Disclosure.Button>
-                <Disclosure.Panel className='px-4 pb-2 pt-4 text-sm text-gray-500'>
-                  {x.answer}
-                </Disclosure.Panel>
-              </>
-            )}
-          </Disclosure>
-        ))}
+        {faq
+          .filter((x) => x.type === selected)
+          .map((x: FAQProp, index: number) => (
+            <Disclosure key={index}>
+              {({ open }) => (
+                <>
+                  <Disclosure.Button className='flex w-full justify-between rounded-lg bg-pink-100 px-4 py-6 my-3 text-left text-md font-medium text-purple-900 hover:bg-pink-200 focus:outline-none focus-visible:ring focus-visible:ring-pink-500/75'>
+                    <span>{x.question}</span>
+                    <ChevronUpIcon
+                      className={`${
+                        open ? 'rotate-180 transform' : ''
+                      } h-5 w-5 text-black`}
+                    />
+                  </Disclosure.Button>
+                  <Disclosure.Panel className='px-4 pb-2 pt-4 text-sm text-gray-500'>
+                    {x.answer}
+                  </Disclosure.Panel>
+                </>
+              )}
+            </Disclosure>
+          ))}
       </div>
       {/**Comment Section */}
       <div className='bg-pink-50 border w-1/2 mx-auto hidden'>
