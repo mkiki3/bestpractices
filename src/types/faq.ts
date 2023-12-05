@@ -13,3 +13,8 @@ export interface Categories {
   General: FAQProp[];
   Payments: FAQProp[];
 }
+
+export type Comments = {
+  name: string;
+  review: string;
+};

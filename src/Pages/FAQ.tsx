@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 
 import { Disclosure } from '@headlessui/react';
@@ -7,8 +8,8 @@ import {
   HandThumbUpIcon as ThumbsUp,
 } from '@heroicons/react/20/solid';
 
-import { faq } from '../data';
-import { FAQProp } from '../types/faq';
+import { comments, faq } from '../data';
+import { Comments, FAQProp } from '../types/faq';
 import { Button } from '../Component';
 
 const FAQ: React.FC = () => {
@@ -62,7 +63,7 @@ const FAQ: React.FC = () => {
             <Disclosure key={index}>
               {({ open }) => (
                 <>
-                  <Disclosure.Button className='flex w-full justify-between rounded-lg bg-pink-100 px-4 py-6 my-3 text-left text-md font-medium text-purple-900 hover:bg-pink-200 focus:outline-none focus-visible:ring focus-visible:ring-pink-500/75'>
+                  <Disclosure.Button className='flex w-full justify-between rounded-lg bg-pink-100 px-4 py-6 my-8 text-left text-md font-medium text-purple-900 hover:bg-pink-200 focus:outline-none focus-visible:ring focus-visible:ring-pink-500/75 shadow-xl '>
                     <span>{x.question}</span>
                     <ChevronUpIcon
                       className={`${
@@ -79,25 +80,34 @@ const FAQ: React.FC = () => {
           ))}
       </div>
       {/**Comment Section */}
-      <div className='bg-pink-50 border w-1/2 mx-auto hidden'>
-        <div className=''>Comments</div>
-        <div className='flex w-1/2  rounded-lg p-5 '>
-          <div className='flex'>
-            <div className='bg-grey-200 w-1/4 rounded-lg mr-7'>placeholder</div>
-            <div className='flex flex-col'>
-              <span className='text-pink-600 font-bold '>Jane Doe</span>
-              <span className='text-md'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud.
-              </span>
-            </div>
-            <div className='flex justify-between w-1/4 ml-8'>
-              <ThumbsDown className='w-8 text-grey-300 hover:text-pink-600' />
-              <ThumbsUp className='w-8 text-grey-300 hover:text-pink-600' />
+      <div className='bg-[#fff8f9] w-full mx-auto  p-3 mt-20'>
+        <div className='w-1/2 mx-auto text-pink-600 font-bold text-lg mb-8'>
+          Comments
+        </div>
+        {comments.map((x: Comments, idx: number) => (
+          <div
+            key={idx}
+            className='bg-white mx-auto rounded-xl w-1/2  p-5 my-4'
+          >
+            <div className='flex'>
+              <div className='bg-grey-200  rounded-lg mr-7 p-4'>
+                placeholder
+              </div>
+
+              {/**Name & Comments */}
+              <div className='flex flex-col'>
+                <span className='text-pink-600 font-semibold'>{x.name}</span>
+                <span className='text-sm line-clamp-4'>{x.review}</span>
+              </div>
+
+              {/**Thumbs */}
+              <div className='flex justify-between w-1/2 ml-5'>
+                <ThumbsDown className='w-8 text-grey-300 hover:text-pink-600' />
+                <ThumbsUp className='w-8 text-grey-300 hover:text-pink-600' />
+              </div>
             </div>
           </div>
-        </div>
+        ))}
       </div>
 
       {/**Add a Review */}
