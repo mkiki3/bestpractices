@@ -6,8 +6,9 @@ import {
   FaceSmileIcon,
 } from '@heroicons/react/20/solid';
 import InputField from '../InputField';
-import RadioButton from '../RadioButton';
+
 import Button from '../Button';
+import Example from '../Example';
 
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -48,7 +49,7 @@ const ContactForm: React.FC = () => {
           <div className='icons info flex flex-col justify-between'>
             <div className='flex'>
               <PhoneIcon className='w-5 mr-6 text-pink-300' />
-              <div className='text-white'>+01 3 4567 8910</div>
+              <div className='text-white'>+0123 4567 8910</div>
             </div>
             <div className='flex my-10'>
               <EnvelopeIcon className='w-5 mr-6 text-pink-300' />
@@ -91,24 +92,16 @@ const ContactForm: React.FC = () => {
               variant='outlined'
               onChange={handleInputChange}
             />
-
             <div className='text-purple-700 font-bold'>
               What is your preferred contact?
             </div>
-            <div className='flex justify-between col-span-2'>
-              <RadioButton text='Cell Phone' />
-              <RadioButton text='Mobile Phone' />
-              <RadioButton text='Email' />
-              <RadioButton text='Social Media' />
-            </div>
-
+            <Example className='col-span-2' />
             <textarea
               name='comment'
               className='col-span-2 outline-none  line-clamp-3 rounded-lg border border-white focus:border-b-pink-250 py-3'
               placeholder='Write a message..'
               onChange={handleInputChange}
             />
-
             <Button
               text='Send Message'
               className='bg-pink-250 rounded-lg text-white text-center col-end-3 w-1/2 p-3 self-end'
