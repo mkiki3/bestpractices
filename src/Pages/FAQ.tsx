@@ -14,7 +14,7 @@ import { Button } from '../Component';
 
 const FAQ: React.FC = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [selected, setSelected] = useState('');
+  const [selected, setSelected] = useState('General');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
