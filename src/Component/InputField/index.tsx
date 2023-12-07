@@ -2,6 +2,7 @@ import React, { ChangeEvent } from 'react';
 import classNames from 'classnames';
 
 interface InputProps extends React.ComponentProps<'input'> {
+  name?: string;
   text?: string;
   type?:
     | 'text'
@@ -12,7 +13,8 @@ interface InputProps extends React.ComponentProps<'input'> {
     | 'file'
     | 'search'
     | 'button'
-    | 'checkbox';
+    | 'checkbox'
+    | 'tel';
   variant?: 'primary' | 'secondary' | 'text' | 'tag' | 'outlined';
   label?: string;
   placeholder?: string;
@@ -21,6 +23,7 @@ interface InputProps extends React.ComponentProps<'input'> {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 const InputField: React.FC<InputProps> = ({
+  name,
   type,
   variant,
   label,
@@ -35,8 +38,9 @@ const InputField: React.FC<InputProps> = ({
           ' focus:outline-none border border-white focus:border-b-pink-250 border-b-grey-400 py-3':
             variant === 'outlined',
         })}
-        required={required}
+        name={name}
         type={type}
+        required={required}
         onChange={onChange}
       />
     </div>

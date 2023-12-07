@@ -8,13 +8,16 @@ import {
 import InputField from '../InputField';
 
 import Button from '../Button';
-import Example from '../Example';
+import Radio from '../Radio';
 
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({
     firstName: '',
+    lastName: '',
     email: '',
+    phone: '',
     comment: '',
+    radio: '',
   });
 
   const handleInputChange = (
@@ -38,7 +41,7 @@ const ContactForm: React.FC = () => {
         Any questions or remarks? Just write us a message
       </div>
       {/**Contact Form */}
-      <div className='grid grid-cols-3 rounded-xl bg-white shadow-xl p-1 mx-44 mb-12'>
+      <div className='grid grid-cols-3 rounded-xl bg-white shadow-xl p-1 mx-52 mb-12'>
         <div className='col-span-1 bg-purple-700 rounded-xl px-10'>
           <div className='text-white text-3xl mb-4 mt-12'>
             Contact Information
@@ -73,29 +76,39 @@ const ContactForm: React.FC = () => {
         >
           <div className='grid grid-cols-2 gap-10'>
             <InputField
+              name='firstName'
+              type='text'
+              variant='outlined'
               label='First Name'
-              variant='outlined'
               onChange={handleInputChange}
             />
             <InputField
+              name='lastName'
+              type='text'
+              variant='outlined'
               label='Last Name'
-              variant='outlined'
               onChange={handleInputChange}
             />
             <InputField
+              name='email'
+              type='email'
+              variant='outlined'
               label='Email'
-              variant='outlined'
               onChange={handleInputChange}
             />
             <InputField
-              label='Phone'
+              name='phone'
+              type='tel'
               variant='outlined'
+              label='Phone'
               onChange={handleInputChange}
             />
+
             <div className='text-purple-700 font-bold'>
               What is your preferred contact?
             </div>
-            <Example className='col-span-2' />
+            <Radio name='radio' />
+
             <textarea
               name='comment'
               className='col-span-2 outline-none  line-clamp-3 rounded-lg border border-white focus:border-b-pink-250 py-3'

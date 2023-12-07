@@ -1,7 +1,7 @@
 import React from 'react';
 
 import classNames from 'classnames';
-import { navProps } from '../../types/navtypes';
+import { navProps } from '../../types/nav';
 import { Link } from 'react-router-dom';
 
 interface SidebarProps {
