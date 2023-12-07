@@ -14,6 +14,7 @@ const Nav: React.FC = () => {
     { path: '/', name: 'Home' },
     { path: '/about', name: 'About' },
     { path: '/contact', name: 'Contact' },
+    { path: '/cookies', name: 'Cookies' },
     { path: '/cart', name: 'Cart' },
     { path: '/faq', name: 'FAQ' },
     { path: '/playground', name: 'Playground' },

@@ -1,13 +1,17 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Nav } from './Component';
-import Home from './Pages/Home';
-import About from './Pages/About';
-import Contact from './Pages/Contact';
-import Cart from './Pages/Cart';
-import FAQ from './Pages/FAQ';
-import Playground from './Pages/Playground';
-import Playground2 from './Pages/Playground2';
+import {
+  Home,
+  About,
+  Cookies,
+  Contact,
+  Cart,
+  FAQ,
+  Playground,
+  Playground2,
+} from './Pages';
+
 const RoutesPage: React.FC = () => {
   return (
     <Router>
@@ -16,6 +20,7 @@ const RoutesPage: React.FC = () => {
         <Routes>
           <Route path='/' element={<Home />}></Route>
           <Route path='/about' element={<About />}></Route>
+          <Route path='/cookies' element={<Cookies />}></Route>
           <Route path='/contact' element={<Contact />}></Route>
           <Route path='/cart' element={<Cart />}></Route>
           <Route path='/faq' element={<FAQ />}></Route>
