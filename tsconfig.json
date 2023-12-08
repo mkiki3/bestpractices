@@ -18,6 +18,7 @@
   },
   "include": ["src"],
   "paths": {
-    "@heroicons/react/*": ["node_modules/@heroicons/react/*"]
+    "@heroicons/react/*": ["node_modules/@heroicons/react/*"],
+    "@components/*": ["components/*"]
   }
 }
