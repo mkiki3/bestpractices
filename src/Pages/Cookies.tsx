@@ -1,6 +1,7 @@
 import React from 'react';
 import Cookie from '../images/chocolate_chip_cookie.svg';
 import { Link } from 'react-router-dom';
+import QtyPicker from '../Component/QtyPicker';
 
 const Cookies: React.FC = () => {
   const arr = [
@@ -12,7 +13,7 @@ const Cookies: React.FC = () => {
     'double fudge',
   ];
   return (
-    <div className='grid grid-cols-4 gap-4 border px-6'>
+    <div className='grid grid-cols-4 gap-4 px-6 mb-12'>
       <div className='flex col-span-4 items-center justify-center text-5xl font-light my-24'>
         Flavors
       </div>
@@ -36,6 +37,10 @@ const Cookies: React.FC = () => {
             <Link to={'/product/'} className='text-grey-600 underline'>
               View Pastry
             </Link>
+            <div className='flex justify-between my-3 w-1/3 space-x-3'>
+              <div className=' text-pink-250 text-xl font-light'>$4.00</div>
+              <QtyPicker />
+            </div>
           </div>
         </div>
       ))}

@@ -18,6 +18,17 @@ const Playground2: React.FC = () => {
   const stars = [false, false, false, false, false];
   const [star] = useState(stars);
 
+  interface filterProps {
+    icon: string;
+    type: string;
+  }
+
+  const arr2 = [
+    { icon: '', type: 'Sugary' },
+    { icon: '', type: 'Chocolate' },
+    { icon: '', type: 'Holiday' },
+    { icon: '', type: 'Fruity' },
+  ];
   return (
     <div className='border p-3 mx-auto '>
       <div className='text-3xl mt-8 '>
@@ -58,32 +69,59 @@ const Playground2: React.FC = () => {
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor
       </div>
+
       {/**Filter Buttons */}
       <div className='m-auto  mt-5  flex justify-between text-sm '>
-        <div className='border flex-col rounded-lg items-center justify-center '>
-          <div className='block bg-pink-250 flex-col p-1 rounded-lg '> X</div>
-          <div>Dessert</div>
-        </div>
-        <div className='border'>Dinner</div>
-        <div className='border'>Breakfast</div>
-        <div className='border'>Dessert</div>
+        {arr2.map((x: filterProps, idx: number) => (
+          <div
+            key={idx}
+            className='flex-col items-center justify-center text-center rounded-lg  bg-pink-250 w-1/5 drop-shadow-xl'
+          >
+            <img
+              src={ChocolateCookie}
+              className='object-contain w-20 rounded-3xl mt-2 drop-shadow-xl'
+            />
+            <div className='font-semibold hover:text-white text-xs mt-2 mb-2'>
+              {x.type}
+            </div>
+          </div>
+        ))}
       </div>
 
-      <div className='text-[8px] rounded-lg  bg-grey-50 py-1 w-1/2'>
-        pr
-        <img className='m-auto h-12' src={ChocolateCookie} />
-        <div className=' text-center text-pink-250 '>
+      <div className='text-[8px] rounded-lg  bg-grey-50 py-1 w-1/2 mt-8 p-3'>
+        <img className='m-auto ' src={ChocolateCookie} />
+        <div className=' text-center text-pink-250 text-lg mx-auto'>
           Chocolate Chip Cookies
         </div>
-        <div className='flex justify-between  m-auto w-12  my-1'>
+        <div className='flex justify-between  m-auto w-16 my-1'>
           {star.map((x: unknown, index: number) => (
             <div key={index}>
               <Star width={10} height={10} />
             </div>
           ))}
         </div>
-        <div className='font-light text-grey-400  mx-1 text-center text-[8px]'>
-          Lorem ipsum dolor sit amet
+        <div className='font-light text-grey-400   text-center text-[8px]'>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco
+        </div>
+      </div>
+      <div className='text-[8px] rounded-lg  bg-grey-50 py-1 w-1/2 mt-8 p-3'>
+        <img className='m-auto ' src={ChocolateCookie} />
+        <div className=' text-center text-pink-250 text-lg mx-auto'>
+          Chocolate Chip Cookies
+        </div>
+        <div className='flex justify-between  m-auto w-16 my-1'>
+          {star.map((x: unknown, index: number) => (
+            <div key={index}>
+              <Star width={10} height={10} />
+            </div>
+          ))}
+        </div>
+        <div className='font-light text-grey-400   text-center text-[8px]'>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco
         </div>
       </div>
     </div>
