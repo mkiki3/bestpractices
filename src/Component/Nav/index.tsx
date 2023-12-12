@@ -18,7 +18,6 @@ const Nav: React.FC = () => {
     { path: '/cart', name: 'Cart' },
     { path: '/faq', name: 'FAQ' },
     { path: '/playground', name: 'Playground' },
-    { path: '/playground2', name: 'Playground2' },
   ];
   return (
     <div className='flex justify-start'>

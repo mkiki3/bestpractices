@@ -195,40 +195,7 @@ const Playground: React.FC = () => {
       </div>
 
       {/**Mobile */}
-      <div className='lg:hidden md:block'>
-        <div className=' flex-col justify-center items-center mx-16 mt-24'>
-          <div className='text-5xl'>
-            Good <span className='text-pink-250'>Food</span>
-          </div>
-          <div className='text-5xl'>
-            Good <span className='bg-pink-250 px-3'>Mood</span>
-          </div>
-          <div className='flex justify-center items-center text-sm text-center w-full my-8'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </div>
-          <Button
-            className={classNames(' text-white bg-pink-250 rounded-3xl m-auto')}
-            size='small'
-            text='Explore menu'
-          />
-          <div className='flex justify-center items-center text-4xl text-center font-medium m-auto mt-14'>
-            <span>
-              <span> Choosing Food just got</span>{' '}
-              <span className='bg-pink-250'>easier</span>
-            </span>
-          </div>
-          <div className='text-sm mt-4 text-center'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
-          </div>
-        </div>
-        <div className='cookie-basket'>
-          <img src={CookieBasket} className='w-full my-20' />
-        </div>
-      </div>
-
-      <div className='p-3 mx-auto '>
+      <div className='p-3 mx-auto lg:hidden'>
         <div className='text-3xl mt-8 '>
           <div className='flex space-x-1 justify-center'>
             <span>Good</span>
@@ -252,7 +219,7 @@ const Playground: React.FC = () => {
             className='bg-pink-250 text-white border  border-pink-250 rounded-2xl shadow-md shadow-grey-500'
           />
         </div>
-        <img className='my-8' src={Cookie} />
+        <img className='my-8 mx-auto' src={Cookie} />
         <div className='mt-8 flex-col mx-auto text-2xl'>
           <div className='flex space-x-1 justify-center'>
             <span>Choosing Food</span>

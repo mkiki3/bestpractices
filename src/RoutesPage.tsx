@@ -10,7 +10,6 @@ import {
   FAQ,
   Product,
   Playground,
-  Playground2,
 } from './Pages';
 
 const RoutesPage: React.FC = () => {
@@ -27,7 +26,6 @@ const RoutesPage: React.FC = () => {
           <Route path='/cart' element={<Cart />}></Route>
           <Route path='/faq' element={<FAQ />}></Route>
           <Route path='/playground' element={<Playground />}></Route>
-          <Route path='/playground2' element={<Playground2 />}></Route>
         </Routes>
       </>
     </Router>
