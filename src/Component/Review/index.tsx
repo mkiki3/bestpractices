@@ -5,7 +5,7 @@ import 'swiper/swiper-bundle.css';
 import Profile from '../../images/profilepic.svg';
 import { Star } from '../../Component';
 
-const Sampler: React.FC = () => {
+const Review: React.FC = () => {
   const reviews = [
     'Ariene McCoy',
     'Alexis Jones',
@@ -59,4 +59,4 @@ const Sampler: React.FC = () => {
   );
 };
 
-export default Sampler;
+export default Review;
