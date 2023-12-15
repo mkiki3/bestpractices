@@ -43,7 +43,7 @@ const DropDown: React.FC<DropDownProps> = ({ options, iconPosition }) => {
 
       {isOpen && (
         <div
-          className='origin-top-right absolute right-0 mt-2 w-1/2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none'
+          className='origin-top-right absolute right-0 mt-2 w-1/2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none overflow-y-auto max-h-20'
           role='menu'
           aria-orientation='vertical'
           aria-labelledby='options-menu'
@@ -53,7 +53,7 @@ const DropDown: React.FC<DropDownProps> = ({ options, iconPosition }) => {
               <button
                 key={option}
                 onClick={() => handleOptionClick(option)}
-                className='block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900'
+                className='block px-2 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900'
                 role='menuitem'
               >
                 {option}
