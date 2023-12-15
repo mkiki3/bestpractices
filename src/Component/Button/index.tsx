@@ -43,7 +43,7 @@ const Button: React.FC<ButtonProps> = ({
     >
       {icon && iconPosition === 'left' && icon}
       {text}
-      {icon && iconPosition === 'right' && icon}
+      {/* {icon && iconPosition === 'right' && icon} */}
     </button>
   );
 };

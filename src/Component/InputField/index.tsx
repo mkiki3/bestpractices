@@ -20,26 +20,33 @@ interface InputProps extends React.ComponentProps<'input'> {
   placeholder?: string;
   required?: boolean;
   errorMessage?: string;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  className?: string;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 const InputField: React.FC<InputProps> = ({
   name,
   type,
   variant,
   label,
+  placeholder,
   required,
+  className,
   onChange,
 }) => {
   return (
     <div className='flex flex-col'>
-      <label className={classNames('text-sm text-grey-400 ')}>{label}</label>
+      {label && (
+        <label className={classNames('text-sm text-grey-400 ')}>{label}</label>
+      )}
       <input
         className={classNames(' border-transparent', {
-          ' focus:outline-none border border-white focus:border-b-pink-250 border-b-grey-400 py-3':
+          ' focus:outline-none border border-white focus:border-b-pink-250 border-b-grey-400 py-3 w-full':
             variant === 'outlined',
+          [`${className}`]: className,
         })}
         name={name}
         type={type}
+        placeholder={placeholder}
         required={required}
         onChange={onChange}
       />
