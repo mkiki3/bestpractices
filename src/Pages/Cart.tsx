@@ -30,15 +30,28 @@ const Cart: React.FC = () => {
       {step !== 1 && (
         <>
           <div className='flex justify-between mb-8'>
-            <button className='border px-4' onClick={() => navigate(1)}>
-              1
-            </button>
-            <button className='border px-4' onClick={() => navigate(2)}>
-              2
-            </button>
-            <button className='border px-4' onClick={() => navigate(3)}>
-              3
-            </button>
+            <div className='flex flex-col items-center'>
+              <button
+                className='border-8  border-pink-50 bg-pink-250 px-4 rounded-full p-1 h-12'
+                onClick={() => navigate(1)}
+              ></button>
+              <div className='text-pink-250 text-xs mt-2'>Shipping</div>
+            </div>
+
+            <div className='flex flex-col items-center'>
+              <button
+                className='border-8  border-pink-50 bg-pink-250 px-4 rounded-full p-1 h-12'
+                onClick={() => navigate(2)}
+              ></button>
+              <div className='text-pink-250 text-xs mt-2'>Payment</div>
+            </div>
+            <div className='flex flex-col items-center'>
+              <button
+                className='border-8  border-pink-50 bg-pink-250 px-4 rounded-full p-1 h-12'
+                onClick={() => navigate(3)}
+              ></button>
+              <div className='text-pink-250 text-xs mt-2'>Review</div>
+            </div>
           </div>
         </>
       )}
@@ -131,7 +144,7 @@ const Cart: React.FC = () => {
             <Button
               text='APPLY'
               variant='outlined'
-              className='rounded-lg text-center px-4 text-orange-500 hover:text-white hover:bg-orange-500'
+              className='rounded-lg text-center px-4 text-pink-250 hover:text-white hover:bg-pink-250'
             />
           </div>
           <div className='flex justify-between my-4'>
