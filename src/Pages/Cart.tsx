@@ -3,6 +3,7 @@ import React from 'react';
 import InputField from '../Component/InputField';
 import { Button } from '../Component';
 import DropDown from '../Component/DropDown';
+import Cookie from '../images/chocolate_chip_cookie.svg';
 
 const Cart: React.FC = () => {
   const arr = [
@@ -22,8 +23,8 @@ const Cart: React.FC = () => {
       <div className='max-h-96 overflow-y-auto pb-8'>
         {arr.map((x: props, idx: number) => (
           <div key={idx} className='flex p-3'>
-            <div className='bg-grey-200 rounded-lg py-10 px-3 mr-2'>
-              placeholder
+            <div className='rounded-lg py-10 px-3 mr-2 border border-grey-400'>
+              <img src={Cookie} className='w-48' />
             </div>
             <div className='flex flex-col justify-between text-left'>
               <div className='tracking-wide'>Chocolate Cookie Chip</div>
@@ -41,7 +42,43 @@ const Cart: React.FC = () => {
           </div>
         ))}
       </div>
+      <div className='shipping flex flex-col border border-grey-400 rounded-lg p-3 hidden'>
+        <div className='flex justify-between'>
+          <div className='font-semibold'>Shipping Address</div>
+          <div className='underline'>Edit</div>
+        </div>
+        <div className='flex justify-between'>
+          <div className=''>Name</div>
+          <div className=''>Jane Doe</div>
+        </div>
+        <div className='flex justify-between'>
+          <div className=''>Street</div>
+          <div className=''>213 Clark St.</div>
+        </div>
+        <div className='flex justify-between'>
+          <div className=''>City</div>
+          <div className=''>Houston</div>
+        </div>
+      </div>
+      <div className='payment flex flex-col border border-grey-400 rounded-lg p-3 mt-3 hidden'>
+        <div className='flex justify-between mb-2'>
+          <div className='font-semibold'>Payment</div>
+          <div className='underline'>Edit</div>
+        </div>
+        <div className='flex justify-between'>
+          <div>**** 8372</div> <div>01/24</div>
+        </div>
+      </div>
 
+      <div className='flex flex-col justify-center items-center hidden'>
+        <div className='rounded-full border-8 px-12 py-12 border-pink-50  bg-pink-250 mb-8'></div>
+        <div className='font-semibold text-xl  text-center w-[75%] mb-3'>
+          Payment has been received sucessfully!
+        </div>
+        <div className='font-light text-grey-400'>
+          Youll get a notification of your order status
+        </div>
+      </div>
       <div className='border hidden'>2</div>
 
       <div className='my-3'>Order Summary</div>
@@ -54,7 +91,7 @@ const Cart: React.FC = () => {
         <Button
           text='APPLY'
           variant='outlined'
-          className='rounded-lg text-center px-4 text-orange-500'
+          className='rounded-lg text-center px-4 text-orange-500 hover:text-white hover:bg-orange-500'
         />
       </div>
       <div className='flex justify-between my-4'>
@@ -70,8 +107,6 @@ const Cart: React.FC = () => {
         <div className='font-semibold'>Total</div>
         <div className='font-semibold'>$30.00</div>
       </div>
-
-      {/* <button className='bg-pink-250 rounded-2xl text-white text-center px-1 py-3 my-4  w-full fixed bottom-0 left-0'> */}
       <button className='bg-pink-250 rounded-2xl text-white text-center fixed bottom-4 left-1/2 transform -translate-x-1/2 w-96 py-2 '>
         CONTINUE CHECKOUT
       </button>
