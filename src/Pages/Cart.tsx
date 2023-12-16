@@ -9,6 +9,9 @@ const Cart: React.FC = () => {
     { name: 'Chocolate Chip Cookie' },
     { name: 'Chocolate Chip Cookie' },
     { name: 'Chocolate Chip Cookie' },
+    { name: 'Chocolate Chip Cookie' },
+    { name: 'Chocolate Chip Cookie' },
+    { name: 'Chocolate Chip Cookie' },
   ];
   const options = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
   interface props {
@@ -16,25 +19,30 @@ const Cart: React.FC = () => {
   }
   return (
     <div className='grid grid-cols-1 lg:grid-cols-2 p-3'>
-      {arr.map((x: props, idx: number) => (
-        <div key={idx} className='flex p-3'>
-          <div className='bg-grey-200 rounded-lg py-10 px-3 mr-2'>
-            placeholder
-          </div>
-          <div className='flex flex-col justify-between text-left'>
-            <div className='tracking-wide'>Chocolate Cookie Chip</div>
-            <div className='flex justify-between text-sm'>
-              <div className='text-pink-250 font-medium text-md'>$4.00</div>
-              <div>
-                <DropDown options={options} iconPosition='right' />
+      <div className='max-h-96 overflow-y-auto pb-8'>
+        {arr.map((x: props, idx: number) => (
+          <div key={idx} className='flex p-3'>
+            <div className='bg-grey-200 rounded-lg py-10 px-3 mr-2'>
+              placeholder
+            </div>
+            <div className='flex flex-col justify-between text-left'>
+              <div className='tracking-wide'>Chocolate Cookie Chip</div>
+              <div className='text-sm text-grey-600 font-light'>
+                Lorem ipsum dolor sit amet, consectetur adipiscing.
               </div>
-              <div className='underline'>Remove</div>
+              <div className='flex justify-between text-sm items-center'>
+                <div className='text-pink-250 font-medium text-md'>$4.00</div>
+                <div>
+                  <DropDown options={options} iconPosition='right' />
+                </div>
+                <div className='underline'>Remove</div>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
 
-      <div className='border'>2</div>
+      <div className='border hidden'>2</div>
 
       <div className='my-3'>Order Summary</div>
       <div className='flex'>
@@ -62,7 +70,9 @@ const Cart: React.FC = () => {
         <div className='font-semibold'>Total</div>
         <div className='font-semibold'>$30.00</div>
       </div>
-      <button className='bg-pink-250 rounded-2xl text-white text-center px-1 py-3 my-4 w-full'>
+
+      {/* <button className='bg-pink-250 rounded-2xl text-white text-center px-1 py-3 my-4  w-full fixed bottom-0 left-0'> */}
+      <button className='bg-pink-250 rounded-2xl text-white text-center fixed bottom-4 left-1/2 transform -translate-x-1/2 w-96 py-2 '>
         CONTINUE CHECKOUT
       </button>
     </div>

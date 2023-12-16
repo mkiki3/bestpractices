@@ -12,7 +12,6 @@ const Nav: React.FC = () => {
 
   const navItems = [
     { path: '/', name: 'Home' },
-    { path: '/about', name: 'About' },
     { path: '/contact', name: 'Contact' },
     { path: '/cookies', name: 'Cookies' },
     { path: '/cart', name: 'Cart' },
