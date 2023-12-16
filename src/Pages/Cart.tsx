@@ -17,6 +17,8 @@ const Cart: React.FC = () => {
   const options = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
   const [step, setStep] = useState(1);
 
+  const buttonText = ['CONTINUE CHECKOUT', 'PAY NOW $30.00', 'BACK TO HOME'];
+
   const navigate = (page: number) => {
     setStep(page);
   };
@@ -25,44 +27,56 @@ const Cart: React.FC = () => {
   }
   return (
     <div className='grid grid-cols-1 lg:grid-cols-2 p-3'>
-      <div className='flex justify-between mb-8'>
-        <button className='border px-4' onClick={() => navigate(1)}>
-          1
-        </button>
-        <button className='border px-4' onClick={() => navigate(2)}>
-          2
-        </button>
-        <button className='border px-4' onClick={() => navigate(3)}>
-          3
-        </button>
-      </div>
+      {step !== 1 && (
+        <>
+          <div className='flex justify-between mb-8'>
+            <button className='border px-4' onClick={() => navigate(1)}>
+              1
+            </button>
+            <button className='border px-4' onClick={() => navigate(2)}>
+              2
+            </button>
+            <button className='border px-4' onClick={() => navigate(3)}>
+              3
+            </button>
+          </div>
+        </>
+      )}
       {step === 1 && (
-        <div className='max-h-96 overflow-y-auto pb-8'>
-          {arr.map((x: props, idx: number) => (
-            <div key={idx} className='flex p-3'>
-              <div className='rounded-lg py-10 px-3 mr-2 border border-grey-400'>
-                <img src={Cookie} className='w-48' />
-              </div>
-              <div className='flex flex-col justify-between text-left'>
-                <div className='tracking-wide'>Chocolate Cookie Chip</div>
-                <div className='text-sm text-grey-600 font-light'>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing.
+        <>
+          <div className='flex justify-between px-3 my-3'>
+            <div>Shopping Cart</div>
+            <div className='underline'>Continue Shopping</div>
+          </div>
+          <div className='max-h-96 overflow-y-auto pb-8'>
+            {arr.map((x: props, idx: number) => (
+              <div key={idx} className='flex p-3'>
+                <div className='rounded-lg py-10 px-3 mr-2 border border-grey-400'>
+                  <img src={Cookie} className='w-48' />
                 </div>
-                <div className='flex justify-between text-sm items-center'>
-                  <div className='text-pink-250 font-medium text-md'>$4.00</div>
-                  <div>
-                    <DropDown options={options} iconPosition='right' />
+                <div className='flex flex-col justify-between text-left'>
+                  <div className='tracking-wide'>Chocolate Cookie Chip</div>
+                  <div className='text-sm text-grey-600 font-light'>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing.
                   </div>
-                  <div className='underline'>Remove</div>
+                  <div className='flex justify-between text-sm items-center'>
+                    <div className='text-pink-250 font-medium text-md'>
+                      $4.00
+                    </div>
+                    <div>
+                      <DropDown options={options} iconPosition='right' />
+                    </div>
+                    <div className='underline'>Remove</div>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </>
       )}
       {step === 2 && (
         <>
-          <div className='shipping flex flex-col border border-grey-400 rounded-lg p-3 '>
+          <div className='shipping flex flex-col border border-grey-400 rounded-lg p-3'>
             <div className='flex justify-between'>
               <div className='font-semibold'>Shipping Address</div>
               <div className='underline'>Edit</div>
@@ -135,8 +149,11 @@ const Cart: React.FC = () => {
           </div>
         </>
       )}
-      <button className='bg-pink-250 rounded-2xl text-white text-center fixed bottom-4 left-1/2 transform -translate-x-1/2 w-96 py-2 '>
-        CONTINUE CHECKOUT
+      <button
+        className='bg-pink-250 rounded-2xl text-white text-center fixed bottom-4 left-1/2 transform -translate-x-1/2 w-96 py-2'
+        onClick={() => setStep((prev) => prev + 1)}
+      >
+        {buttonText[step - 1]}
       </button>
     </div>
   );
