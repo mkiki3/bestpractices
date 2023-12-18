@@ -34,13 +34,13 @@ const InputField: React.FC<InputProps> = ({
   onChange,
 }) => {
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col w-full'>
       {label && (
-        <label className={classNames('text-sm text-grey-400 ')}>{label}</label>
+        <label className={classNames('text-sm text-grey-400')}>{label}</label>
       )}
       <input
         className={classNames(' border-transparent', {
-          ' focus:outline-none border border-white focus:border-b-pink-250 border-b-grey-400 py-3 w-full':
+          ' focus:outline-none border border-white focus:border-b-pink-250 border-b-grey-400 py-3':
             variant === 'outlined',
           [`${className}`]: className,
         })}
