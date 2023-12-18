@@ -36,20 +36,19 @@ const ContactForm: React.FC = () => {
   return (
     <>
       {/**Heading */}
-      <div className='flex justify-center text-3xl font-bold mt-8'>
+      <div className='flex justify-center md:text-4xl text-3xl font-bold mt-8'>
         Contact Us
       </div>
-      <div className='flex justify-center text-grey-500 md:my-6 md:mb-16 font-normal text-sm my-3 mb-8'>
+      <div className='flex justify-center text-grey-500 md:my-6 md:mb-16 font-normal  md:text-lg text-sm my-3 mb-8'>
         Any questions or remarks? Just write us a message
       </div>
       {/**Contact Form */}
-      {/* <div className='grid grid-cols-3 rounded-xl bg-white shadow-xl p-1 mx-52 mb-12'> */}
-      <div className='grid grid-cols-4 rounded-xl bg-white md:shadow-xl shadow-none md:mx-52 mx-0'>
-        <div className='col-span-1 bg-purple-700 rounded-xl px-10 hidden md:block'>
-          <div className='text-white text-3xl mb-4 mt-12'>
+      <div className='grid grid-cols-4 rounded-xl bg-white md:shadow-xl shadow-none md:mx-60 mx-0'>
+        <div className='col-span-1 bg-purple-700 rounded-xl px-8 md:m-2 m-0 hidden md:block'>
+          <div className='text-white text-2xl mb-4 mt-12'>
             Contact Information
           </div>
-          <div className='text-grey-100 text-lg font-light w-[70%] mb-12'>
+          <div className='text-grey-100 text-sm font-light w-full mb-12'>
             Fill up the form and our Team will get back to you within 24 hours
           </div>
           <div className='icons info flex flex-col justify-between'>
@@ -75,8 +74,7 @@ const ContactForm: React.FC = () => {
         </div>
         <form
           onSubmit={handleSubmit}
-          // className='col-span-2 bg-white  px-16 pt-10'
-          className='md:col-span-3 col-span-4 bg-white md:p-16 px-8'
+          className='md:col-span-3 col-span-4 bg-white md:p-8 px-8'
         >
           <div className='grid grid-cols-4 gap-6'>
             <div className='md:col-span-2 col-span-4'>
