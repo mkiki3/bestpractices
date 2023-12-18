@@ -36,13 +36,16 @@ const ContactForm: React.FC = () => {
   return (
     <>
       {/**Heading */}
-      <div className='flex justify-center text-3xl font-bold'>Contact Us</div>
-      <div className='flex justify-center text-grey-500 my-6 mb-16 font-normal'>
+      <div className='flex justify-center text-3xl font-bold mt-8'>
+        Contact Us
+      </div>
+      <div className='flex justify-center text-grey-500 md:my-6 md:mb-16 font-normal text-sm my-3 mb-8'>
         Any questions or remarks? Just write us a message
       </div>
       {/**Contact Form */}
-      <div className='grid grid-cols-3 rounded-xl bg-white shadow-xl p-1 mx-52 mb-12'>
-        <div className='col-span-1 bg-purple-700 rounded-xl px-10'>
+      {/* <div className='grid grid-cols-3 rounded-xl bg-white shadow-xl p-1 mx-52 mb-12'> */}
+      <div className='grid grid-cols-4 rounded-xl bg-white md:shadow-xl shadow-none md:mx-52 mx-0'>
+        <div className='col-span-1 bg-purple-700 rounded-xl px-10 hidden md:block'>
           <div className='text-white text-3xl mb-4 mt-12'>
             Contact Information
           </div>
@@ -72,53 +75,68 @@ const ContactForm: React.FC = () => {
         </div>
         <form
           onSubmit={handleSubmit}
-          className='col-span-2 bg-white  px-16 pt-10 '
+          // className='col-span-2 bg-white  px-16 pt-10'
+          className='md:col-span-3 col-span-4 bg-white md:p-16 px-8'
         >
-          <div className='grid grid-cols-2 gap-10'>
-            <InputField
-              name='firstName'
-              type='text'
-              variant='outlined'
-              label='First Name'
-              onChange={handleInputChange}
-            />
-            <InputField
-              name='lastName'
-              type='text'
-              variant='outlined'
-              label='Last Name'
-              onChange={handleInputChange}
-            />
-            <InputField
-              name='email'
-              type='email'
-              variant='outlined'
-              label='Email'
-              onChange={handleInputChange}
-            />
-            <InputField
-              name='phone'
-              type='tel'
-              variant='outlined'
-              label='Phone'
-              onChange={handleInputChange}
-            />
-
-            <div className='text-purple-700 font-bold'>
-              What is your preferred contact?
+          <div className='grid grid-cols-4 gap-6'>
+            <div className='md:col-span-2 col-span-4'>
+              <InputField
+                name='firstName'
+                type='text'
+                variant='outlined'
+                label='First Name'
+                onChange={handleInputChange}
+              />
             </div>
-            <Radio name='radio' />
+            <div className=' md:col-span-2 col-span-4'>
+              <InputField
+                name='lastName'
+                type='text'
+                variant='outlined'
+                label='Last Name'
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className=' md:col-span-2 col-span-4'>
+              <InputField
+                name='email'
+                type='email'
+                variant='outlined'
+                label='Email'
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className=' md:col-span-2 col-span-4'>
+              <InputField
+                name='phone'
+                type='tel'
+                variant='outlined'
+                label='Phone'
+                onChange={handleInputChange}
+              />
+            </div>
 
-            <textarea
-              name='comment'
-              className='col-span-2 outline-none  line-clamp-3 rounded-lg border border-white focus:border-b-pink-250 py-3'
-              placeholder='Write a message..'
-              onChange={handleInputChange}
-            />
-            <Button
-              text='Send Message'
-              className='bg-pink-250 rounded-lg text-white text-center col-end-3 w-1/2 p-3 self-end'
-            />
+            <div className='col-span-4'>
+              <div className='text-purple-700 font-bold mt-4 mb-8'>
+                What is your preferred contact?
+              </div>
+              <Radio name='radio' />
+            </div>
+
+            <div className='col-span-4'>
+              <textarea
+                name='comment'
+                className='col-span-2 outline-none  line-clamp-3 rounded-lg border border-white focus:border-b-pink-250 border-b-grey-400 py-3  mb-6 w-full'
+                placeholder='Write a message..'
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className=' md:col-span-2 col-span-4'>
+              <Button
+                text='Send Message'
+                className='bg-pink-250 rounded-lg text-white text-center col-end-3 md:w-1/2 w-full p-3 self-end'
+              />
+            </div>
           </div>
         </form>
       </div>

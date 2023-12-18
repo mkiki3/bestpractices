@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { ChevronUpIcon } from '@heroicons/react/20/solid';
-
+import classNames from 'classnames';
 interface DropDownProps {
   options: string[];
   iconPosition?: 'left' | 'right';
+  className?: string;
 }
 
-const DropDown: React.FC<DropDownProps> = ({ options, iconPosition }) => {
+const DropDown: React.FC<DropDownProps> = ({
+  options,
+  iconPosition,
+  className,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(options[0]);
 
@@ -20,7 +25,11 @@ const DropDown: React.FC<DropDownProps> = ({ options, iconPosition }) => {
     setIsOpen(false);
   };
   return (
-    <div className='relative inline-block text-left'>
+    <div
+      className={classNames('relative inline-block text-left', {
+        [`${className}`]: className,
+      })}
+    >
       <div>
         <button
           type='button'

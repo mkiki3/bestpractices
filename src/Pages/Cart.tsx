@@ -26,37 +26,52 @@ const Cart: React.FC = () => {
     name: string;
   }
   return (
-    <div className='grid grid-cols-1 lg:grid-cols-2 p-3'>
+    <div className='grid grid-cols-1 lg:grid-cols-4 p-3 lg:p-20'>
+      <div className='border bg-grey-50 col-span-3 px-8 hidden lg:block'>
+        <div>Payment Details</div>
+        <div>
+          We never store your credit card number and your payment is secure
+        </div>
+        <div>Select Payemnt Method</div>
+        <div className='grid grid-cols-4 border px-20'>
+          <InputField label='Name on Card' className='col-span-4' />
+          <InputField label='Card Number' className='col-span-3' />
+          <InputField label='.' className='col-span-1' />
+          {/* <DropDown options={options} className='col-span-1' /> */}
+          <InputField label='Expiration' className='col-span-1' />
+          <InputField className='col-span-1' />
+          <InputField label='CVC' className='col-span-1' />
+        </div>
+      </div>
+      <div className='border bg-grey-50 col-span-1 hidden lg:block'>2</div>
       {step !== 1 && (
-        <>
-          <div className='flex justify-between mb-8'>
-            <div className='flex flex-col items-center'>
-              <button
-                className='border-8  border-pink-50 bg-pink-250 px-4 rounded-full p-1 h-12'
-                onClick={() => navigate(1)}
-              ></button>
-              <div className='text-pink-250 text-xs mt-2'>Shipping</div>
-            </div>
-
-            <div className='flex flex-col items-center'>
-              <button
-                className='border-8  border-pink-50 bg-pink-250 px-4 rounded-full p-1 h-12'
-                onClick={() => navigate(2)}
-              ></button>
-              <div className='text-pink-250 text-xs mt-2'>Payment</div>
-            </div>
-            <div className='flex flex-col items-center'>
-              <button
-                className='border-8  border-pink-50 bg-pink-250 px-4 rounded-full p-1 h-12'
-                onClick={() => navigate(3)}
-              ></button>
-              <div className='text-pink-250 text-xs mt-2'>Review</div>
-            </div>
+        <div className='flex justify-between mb-8 lg:hidden'>
+          <div className='flex flex-col items-center'>
+            <button
+              className='border-8  border-pink-50 bg-pink-250 px-4 rounded-full p-1 h-12'
+              onClick={() => navigate(1)}
+            ></button>
+            <div className='text-pink-250 text-xs mt-2'>Shipping</div>
           </div>
-        </>
+
+          <div className='flex flex-col items-center'>
+            <button
+              className='border-8  border-pink-50 bg-pink-250 px-4 rounded-full p-1 h-12'
+              onClick={() => navigate(2)}
+            ></button>
+            <div className='text-pink-250 text-xs mt-2'>Payment</div>
+          </div>
+          <div className='flex flex-col items-center'>
+            <button
+              className='border-8  border-pink-50 bg-pink-250 px-4 rounded-full p-1 h-12'
+              onClick={() => navigate(3)}
+            ></button>
+            <div className='text-pink-250 text-xs mt-2'>Review</div>
+          </div>
+        </div>
       )}
       {step === 1 && (
-        <>
+        <div className='lg:hidden'>
           <div className='flex justify-between px-3 my-3'>
             <div>Shopping Cart</div>
             <div className='underline'>Continue Shopping</div>
@@ -85,10 +100,10 @@ const Cart: React.FC = () => {
               </div>
             ))}
           </div>
-        </>
+        </div>
       )}
       {step === 2 && (
-        <>
+        <div className='lg:hidden'>
           <div className='shipping flex flex-col border border-grey-400 rounded-lg p-3'>
             <div className='flex justify-between'>
               <div className='font-semibold'>Shipping Address</div>
@@ -116,11 +131,10 @@ const Cart: React.FC = () => {
               <div>**** 8372</div> <div>01/24</div>
             </div>
           </div>
-        </>
+        </div>
       )}
-
       {step === 3 && (
-        <div className='flex flex-col justify-center items-center py-32'>
+        <div className='flex flex-col justify-center items-center py-32 lg:hidden'>
           <div className='rounded-full border-8 px-12 py-12 border-pink-50  bg-pink-250 mb-8'></div>
           <div className='font-semibold text-xl  text-center w-[75%] mb-3'>
             Payment has been received sucessfully!
@@ -130,10 +144,8 @@ const Cart: React.FC = () => {
           </div>
         </div>
       )}
-
-      <div className='border hidden'>2</div>
       {step !== 3 && (
-        <>
+        <div className='lg:hidden'>
           <div className='my-3'>Order Summary</div>
           <div className='flex'>
             <input
@@ -160,10 +172,10 @@ const Cart: React.FC = () => {
             <div className='font-semibold'>Total</div>
             <div className='font-semibold'>$30.00</div>
           </div>
-        </>
+        </div>
       )}
       <button
-        className='bg-pink-250 rounded-2xl text-white text-center fixed bottom-4 left-1/2 transform -translate-x-1/2 w-96 py-2'
+        className='bg-pink-250 rounded-2xl text-white text-center fixed bottom-4 left-1/2 transform -translate-x-1/2 w-96 py-2 lg:hidden'
         onClick={() => setStep((prev) => prev + 1)}
       >
         {buttonText[step - 1]}
