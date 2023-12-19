@@ -27,7 +27,7 @@ const Cookies: React.FC = () => {
             <div className='flex flex-col pl-4'>
               <div className='lg:text-3xl text-base'>Chocolate Chip</div>
               <div className='border border-white  border-b-pink-250 border-b-4 lg:my-3 my-1 w-1/4 '></div>
-              <div className='text-grey-400 lg:text-xs text-sm  text-left'>
+              <div className='text-grey-400 lg:text-lg lg:w-[70%] text-sm  text-left'>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua.
               </div>
@@ -38,10 +38,6 @@ const Cookies: React.FC = () => {
               >
                 View Pastry
               </Link>
-              <div className='flex justify-between my-3 w-1/3 space-x-3'>
-                <div className=' text-pink-250 text-xl font-light'>$4.00</div>
-                <QtyPicker />
-              </div>
             </div>
           </div>
         ))}
