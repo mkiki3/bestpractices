@@ -352,7 +352,7 @@ const Cart: React.FC = () => {
             {/**Button */}
             <button
               onClick={() => navigate(1)}
-              className='flex  justify-between bg-pink-250 rounded-lg mx-auto w-full p-4'
+              className='flex  justify-between bg-pink-250 rounded-lg mx-auto w-full p-4 mb-10'
             >
               <div className='text-white'>$12.00</div>
               <div className='text-white'>Checkout</div>
