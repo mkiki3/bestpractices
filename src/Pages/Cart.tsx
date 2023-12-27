@@ -5,6 +5,9 @@ import { Button } from '../Component';
 import DropDown from '../Component/DropDown';
 import Cookie from '../images/chocolate_chip_cookie.svg';
 import SugarCookie from '../images/sugar-cookie.png';
+import DCookie from '../images/dark_chocolate_cookie.png';
+import Smore from '../images/smore.png';
+import HalloweenCookie from '../images/halloween-cookie.png';
 import CustomQtyPicker from '../Component/CustomQtyPicker';
 import {
   BanknotesIcon,
@@ -36,7 +39,17 @@ const Cart: React.FC = () => {
     { name: 'Chocolate Chip Cookie', img: SugarCookie },
     { name: 'Chocolate Chip Cookie', img: Cookie },
   ];
-  const c = [0, 1, 2, 3, 4];
+  const items = [
+    { name: 'Sugar Cookie', img: SugarCookie },
+    { name: 'Chocolate Chip Cookie', img: Cookie },
+    { name: 'Dark Chocolate Cookie', img: DCookie },
+    { name: 'Smore Cookie', img: Smore },
+    { name: 'Halloween Cookie', img: HalloweenCookie },
+    { name: 'Dark Chocolate Cookie', img: DCookie },
+    { name: 'Smore Cookie', img: Smore },
+    { name: 'Halloween Cookie', img: HalloweenCookie },
+  ];
+  // const c = [0, 1, 2, 3, 4];
   const options = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
   const [step, setStep] = useState(1);
 
@@ -232,7 +245,7 @@ const Cart: React.FC = () => {
       )}
 
       {step == 1 && (
-        <div className='flex justify-center w-[65%] rounded-3xl shadow-lg mx-auto mt-16 p-6 py-10'>
+        <div className='md:flex hidden justify-center w-[65%] rounded-3xl shadow-lg mx-auto mt-16 p-6 py-10'>
           {/**Left Side */}
           <div className='p-6'>
             {/**Continue Shopping */}
@@ -259,18 +272,21 @@ const Cart: React.FC = () => {
             </div>
 
             {/**Cart Item */}
-            <div className='max-h-[85%] overflow-y-auto'>
-              {c.map((x, idx: number) => (
+            <div className='max-h-[540px] overflow-y-auto'>
+              {items.map((x, idx: number) => (
                 <div
                   key={idx}
                   className='cart-item flex items-center rounded-lg shadow-md p-3 my-3'
                 >
                   <div className='flex'>
-                    <div className='border w-24 h-20'>
-                      <img src={Cookie} className='mt-2' />
+                    <div className='w-24 h-20'>
+                      <img
+                        src={x.img}
+                        className='flex justify-center items-center'
+                      />
                     </div>
                     <div className='flex flex-col text-left w-[90%] px-4'>
-                      <div className='text-md'>Sugar Cookie</div>
+                      <div className='text-md'>{x.name}</div>
                       <div className='text-xs text-grey-400'>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       </div>
