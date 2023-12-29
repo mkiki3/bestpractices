@@ -1,14 +1,6 @@
 import React, { useState } from 'react';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import InputField from '../Component/InputField';
-import { Button } from '../Component';
-import DropDown from '../Component/DropDown';
-import Cookie from '../images/chocolate_chip_cookie.svg';
-import SugarCookie from '../images/sugar-cookie.png';
-import DCookie from '../images/dark_chocolate_cookie.png';
-import Smore from '../images/smore.png';
-import HalloweenCookie from '../images/halloween-cookie.png';
-import CustomQtyPicker from '../Component/CustomQtyPicker';
+
+import cn from 'classnames';
 import {
   BanknotesIcon,
   ShoppingCartIcon,
@@ -16,7 +8,20 @@ import {
   CreditCardIcon,
   TrashIcon,
   ArrowLeftIcon,
+  UserIcon,
+  CheckCircleIcon,
 } from '@heroicons/react/20/solid';
+
+import InputField from '../Component/InputField';
+import { Button } from '../Component';
+import DropDown from '../Component/DropDown';
+
+import Cookie from '../images/chocolate_chip_cookie.svg';
+import SugarCookie from '../images/sugar-cookie.png';
+import DCookie from '../images/dark_chocolate_cookie.png';
+import Smore from '../images/smore.png';
+import HalloweenCookie from '../images/halloween-cookie.png';
+import CustomQtyPicker from '../Component/CustomQtyPicker';
 import PayPal from '../images/paypal.svg';
 import PayPalLogo from '../images/paypal_logo.svg';
 // import ApplePay from '../images/apple_pay.png';
@@ -35,7 +40,7 @@ const Cart: React.FC = () => {
     { name: 'Chocolate Chip Cookie' },
   ];
 
-  const cartItems = [
+  const temp = [
     { name: 'Chocolate Chip Cookie', img: SugarCookie },
     { name: 'Chocolate Chip Cookie', img: Cookie },
   ];
@@ -52,12 +57,8 @@ const Cart: React.FC = () => {
   // const c = [0, 1, 2, 3, 4];
   const options = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
   const [step, setStep] = useState(1);
-
+  const [itemsInCart] = useState(items);
   const buttonText = ['CONTINUE CHECKOUT', 'PAY NOW $30.00', 'BACK TO HOME'];
-
-  const navigate = (page: number) => {
-    setStep(page);
-  };
   interface props {
     name: string;
   }
@@ -161,7 +162,7 @@ const Cart: React.FC = () => {
           </div>
           {/**Right Side */}
           <div className='flex flex-col shadow-md p-4'>
-            {cartItems.map((x, idx: number) => (
+            {temp.map((x, idx: number) => (
               <div key={idx} className='flex my-3'>
                 {/**Image & QTY Picker */}
                 <div className='flex'>
@@ -245,9 +246,8 @@ const Cart: React.FC = () => {
       )}
 
       {step == 1 && (
-        <div className='md:flex hidden justify-center w-[65%] rounded-3xl shadow-lg mx-auto mt-16 p-6 py-10'>
-          {/**Left Side */}
-          <div className='p-6'>
+        <div className='md:flex hidden items-center justify-center shadow-md rounded-2xl mx-32 mt-32'>
+          <div className='bg-white  p-6 rounded-md mr-6'>
             {/**Continue Shopping */}
             <div className='w-full'>
               <button className='flex justify-center items-center'>
@@ -257,11 +257,11 @@ const Cart: React.FC = () => {
                 </div>
               </button>
             </div>
-            <hr className='text-grey-400 my-4' />
+            <hr className='text-grey-200  border-1 mt-8' />
             {/**Shopping Items and Filter */}
-            <div className='flex justify-between'>
-              <div className='flex flex-col'>
-                <div className='text-lg text-grey-600 font-medium'>
+            <div className='flex justify-between mt-12'>
+              <div className=''>
+                <div className='text-2xl text-grey-600 font-medium mb-2'>
                   Shopping Cart
                 </div>
                 <div className='text-sm text-grey-400'>
@@ -270,13 +270,12 @@ const Cart: React.FC = () => {
               </div>
               <div className='flex flex-col justify-end'> Sort by:Price</div>
             </div>
-
             {/**Cart Item */}
             <div className='max-h-[540px] overflow-y-auto'>
-              {items.map((x, idx: number) => (
+              {itemsInCart.map((x, idx: number) => (
                 <div
                   key={idx}
-                  className='cart-item flex items-center rounded-lg shadow-md p-3 my-3'
+                  className='cart-item flex items-center rounded-lg shadow-md p-3 my-10'
                 >
                   <div className='flex'>
                     <div className='w-24 h-20'>
@@ -297,82 +296,97 @@ const Cart: React.FC = () => {
                       <CustomQtyPicker />
                     </div>
                     <div className='font-semibold'>$ 4.00</div>
-                    <TrashIcon className='w-5 mx-4 text-grey-400 hover:text-pink-250' />
+                    <TrashIcon
+                      className='w-5 mx-4 text-grey-400 hover:text-pink-250'
+                      // onClick={() => removeCartitem(x.name)}
+                    />
                   </div>
                 </div>
               ))}
             </div>
           </div>
-          {/**Right Side */}
-          <div className='flex flex-col w-[45%] rounded-3xl shadow-md bg-pink-300  px-6'>
-            <div className='font-semibold text-white mb-6 mt-10'>
-              Card Details
-            </div>
-            <div className='text-white text-xs my-2'>Card Type</div>
-            {/**Card type */}
-            <div className='flex mb-8'>
-              <div className='flex space-x-6'>
-                <div className='border border-grey-400 rounded-lg py-2 px-3 '>
-                  <img src={MasteCard} className='w-10' />
-                </div>
-                <div className='border border-grey-400 rounded-lg p-1 px-3'>
-                  <img src={VisaCard} className='w-12' />
-                </div>
-                <div className='border border-grey-400 rounded-lg px-2'>
-                  <img src={Amex} className='w-12 mt-1' />
-                </div>
-                <div className='border border-grey-400 rounded-lg my-auto py-4 px-6'>
-                  <img src={PayPalLogo} className='w-6' />
-                </div>
-              </div>
-            </div>
-            {/**form */}
-            <div className='flex flex-col h-56 justify-between mt-8'>
-              <div className='flex flex-col w-full'>
-                <label className='text-sm text-white my-2'>Name on Card</label>
-                <input className='bg-[#de81ac] text-white h-12'></input>
+          {/**The end */}
+          <div className='bg-pink-300 shadow-md p-8 rounded-2xl w-1/3 mb-8'>
+            <div className='flex justify-between mb-6'>
+              <div className='flex items-center text-white text-2xl font-medium mt-3'>
+                Card Details
               </div>
 
-              <div className='flex flex-col w-full'>
-                <label className='text-sm text-white my-2'>Card Number</label>
-                <input className='bg-[#de81ac] text-white h-12'></input>
+              <UserIcon className='w-10 text-white' />
+            </div>
+            {/**Card Type */}
+            <div className='text-white text-sm mb-2'>Card type</div>
+            <div className='flex mb-6 space-x-4'>
+              <div className='flex justify-center items-center relative hover:border hover:border-white rounded-md  w-20 h-16'>
+                <img src={VisaCard} className='w-10 ' />
+                <CheckCircleIcon
+                  className={cn('w-4 absolute top-0 right-0', {
+                    'text-white': 'selected',
+                  })}
+                />
               </div>
+              <div className='flex justify-center items-center relative hover:border hover:border-white rounded-md  w-20 h-16'>
+                <img src={MasteCard} className='w-10' />
+                <CheckCircleIcon
+                  className={cn('w-4 absolute top-0 right-0', {
+                    'text-white': 'selected',
+                  })}
+                />
+              </div>
+              <div className='flex justify-center items-center relative hover:border hover:border-white rounded-md  w-20 h-16'>
+                <img src={Amex} className='w-10' />
+                <CheckCircleIcon
+                  className={cn('w-4 absolute top-0 right-0', {
+                    'text-white': 'selected',
+                  })}
+                />
+              </div>
+            </div>
 
-              <div className='flex justify-between'>
-                <div className='flex flex-col'>
-                  <label className='text-sm text-white my-2'>
+            {/**Form */}
+            <form className='flex flex-col '>
+              <label className='text-sm text-white mb-2'>Name on Card</label>
+              <input className='bg-[#de81ac] text-white h-10'></input>
+
+              <label className='text-sm text-white mt-6 mb-2'>
+                Card Number
+              </label>
+              <input className='bg-[#de81ac] text-white h-10 mb-6'></input>
+              <div className='flex justify-between space-x-4'>
+                <div className='flex flex-col flex-1'>
+                  <label className='text-sm text-white mb-2'>
                     Expiration date
                   </label>
-                  <input className='bg-[#de81ac] text-white h-12'></input>
+                  <input className='bg-[#de81ac] text-white h-10'></input>
                 </div>
-                <div className='flex flex-col w-full'>
-                  <label className='text-sm text-white my-2'>CVC</label>
-                  <input className='bg-[#de81ac] text-white h-12'></input>
+                <div className='flex flex-col flex-1'>
+                  <label className='text-sm text-white mb-2'>CVC</label>
+                  <input className='bg-[#de81ac] text-white h-10'></input>
                 </div>
               </div>
-            </div>
-            {/**Total Price */}
-            <hr className='text-white my-8' />
-            <div className='flex justify-between my-4'>
-              <div className='text-white'>Item Subtotal</div>
-              <div className='font-semibold text-white'>$28.00</div>
-            </div>
-            <div className='flex justify-between mb-4'>
-              <div className='text-white'>Shipping</div>
-              <div className='font-semibold text-white'>$2.00</div>
-            </div>
-            <div className='flex justify-between my-3'>
-              <div className='text-white'>Total</div>
-              <div className='font-semibold text-white'>$30.00</div>
-            </div>
-            {/**Button */}
-            <button
-              onClick={() => navigate(1)}
-              className='flex  justify-between bg-pink-250 rounded-lg mx-auto w-full p-4 mb-10'
-            >
-              <div className='text-white'>$12.00</div>
-              <div className='text-white'>Checkout</div>
-            </button>
+              <hr className='text-[#de81ac] border-2 my-10' />
+              {/**Total */}
+              <div className='flex justify-between mb-4'>
+                <div className='text-white'>Item Subtotal</div>
+                <div className='font-semibold text-white'>$28.00</div>
+              </div>
+              <div className='flex justify-between mb-4'>
+                <div className='text-white'>Shipping</div>
+                <div className='font-semibold text-white'>$2.00</div>
+              </div>
+              <div className='flex justify-between mb-4'>
+                <div className='text-white'>Total</div>
+                <div className='font-semibold text-white'>$30.00</div>
+              </div>
+              {/**Button */}
+              <button
+                onClick={() => navigate(1)}
+                className='flex justify-between bg-pink-250 rounded-lg mx-auto w-full p-4'
+              >
+                <div className='text-white'>$12.00</div>
+                <div className='text-white'>Checkout</div>
+              </button>
+            </form>
           </div>
         </div>
       )}
@@ -518,6 +532,24 @@ const Cart: React.FC = () => {
       </div>
     </>
   );
+
+  function navigate(page: number) {
+    setStep(page);
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  function removeCartitem(cookieName: string) {
+    const foundItemIndex = items.findIndex((item) => item.name === cookieName);
+
+    if (foundItemIndex !== -1) {
+      const removedItem = items.splice(foundItemIndex, 1)[0];
+      console.log('Removed Item:', removedItem);
+      alert(`Item "${cookieName}" removed from the cart.`);
+    } else {
+      console.log('Item not found in the cart.');
+      alert(`Item "${cookieName}" not found in the cart.`);
+    }
+  }
 };
 
 export default Cart;
