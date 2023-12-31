@@ -103,13 +103,13 @@ const Home: React.FC = () => {
         </div>
 
         {/**Dummy Text */}
-        <div className='flex justify-center text-3xl m-auto mt-20 w-1/2 text-center'>
+        <div className='flex justify-center text-3xl m-auto mt-20 w-[40%] text-center font-light'>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor
         </div>
 
         {/**Filter Buttons */}
-        <div className='m-auto w-1/3 p-3 flex justify-between mb-20 mt-10'>
+        <div className='m-auto w-[27%] p-3 flex justify-between mb-20 mt-10'>
           <Button
             icon={<img src={Cookie} className='w-7' />}
             iconPosition='left'
