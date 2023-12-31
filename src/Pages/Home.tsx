@@ -95,9 +95,9 @@ const Home: React.FC = () => {
         </div>
 
         {/**Title */}
-        <div className='flex justify-center text-6xl font-medium m-auto w-1/4 mt-32'>
+        <div className='flex justify-center text-6xl font-medium m-auto w-1/4 mt-12'>
           <span>
-            <span> Choosing Food just got</span>{' '}
+            <span> Choosing Food just got</span>
             <span className='bg-pink-250'>easier</span>
           </span>
         </div>
