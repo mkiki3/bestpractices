@@ -15,13 +15,13 @@ import {
 import InputField from '../Component/InputField';
 import { Button } from '../Component';
 import DropDown from '../Component/DropDown';
+import CustomQtyPicker from '../Component/CustomQtyPicker';
 
 import Cookie from '../images/chocolate_chip_cookie.svg';
 import SugarCookie from '../images/sugar-cookie.png';
 import DCookie from '../images/dark_chocolate_cookie.png';
 import Smore from '../images/smore.png';
 import HalloweenCookie from '../images/halloween-cookie.png';
-import CustomQtyPicker from '../Component/CustomQtyPicker';
 import PayPal from '../images/paypal.svg';
 import PayPalLogo from '../images/paypal_logo.svg';
 // import ApplePay from '../images/apple_pay.png';
