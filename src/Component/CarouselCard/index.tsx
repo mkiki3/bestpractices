@@ -10,12 +10,12 @@ const CarouselCard: React.FC = () => {
   const stars = [false, false, false, false, false];
   const [star] = useState(stars);
   return (
-    <div className=' m-auto rounded-lg text-center bg-grey-50 pb-4'>
+    <div className='rounded-lg text-center bg-grey-50  pb-4'>
       <img className='m-auto h-56' src={Cookie} />
       <div className='text-pink-250 font-bold text-2xl w-1/2 m-auto'>
         Chocolate Chip Cookies
       </div>
-      <div className='flex justify-between  m-auto w-9/12 my-6'>
+      <div className='flex justify-between  m-auto w-[50%] my-6'>
         {star.map((x: unknown, index: number) => (
           <div key={index}>
             <Star width={24} height={24} />

@@ -98,18 +98,18 @@ const Home: React.FC = () => {
         <div className='flex justify-center text-6xl font-medium m-auto w-1/4 mt-12'>
           <span>
             <span> Choosing Food just got</span>
-            <span className='bg-pink-250'>easier</span>
+            <span className='bg-pink-250 ml-1'>easier</span>
           </span>
         </div>
 
         {/**Dummy Text */}
-        <div className='flex justify-center text-3xl m-auto mt-20 w-[40%] text-center font-light'>
+        <div className='flex justify-center text-3xl m-auto mt-10 w-[40%] text-center font-light'>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor
         </div>
 
         {/**Filter Buttons */}
-        <div className='m-auto w-[27%] p-3 flex justify-between mb-20 mt-10'>
+        <div className='m-auto w-[27%] p-3 flex justify-between mb-8 mt-4'>
           <Button
             icon={<img src={Cookie} className='w-7' />}
             iconPosition='left'
@@ -141,12 +141,12 @@ const Home: React.FC = () => {
         </div>
 
         {/**Swiper */}
-        <div className='swiper-container m-auto w-10/12 flex'>
+        <div className='swiper-container mx-auto flex w-[90%]'>
           <div
-            className='flex items-center justify-center mr-6 ustom-swiper-button-prev'
+            className='flex items-center justify-center mr-6 custom-swiper-button-prev'
             onClick={goPrev}
           >
-            <img src={LeftArrowCircle} className='h-56' />
+            <img src={LeftArrowCircle} className='h-32' />
           </div>
 
           <Swiper
@@ -170,7 +170,7 @@ const Home: React.FC = () => {
             className='flex items-center justify-center ml-6 custom-swiper-button-next'
             onClick={goNext}
           >
-            <img src={RightArrowCircle} className='h-56' />
+            <img src={RightArrowCircle} className='h-32' />
           </div>
         </div>
 
