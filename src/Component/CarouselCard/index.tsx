@@ -3,17 +3,18 @@ import React, { useState } from 'react';
 import classNames from 'classnames';
 
 import Button from '../Button';
-import Cookie from '../../images/dark_chocolate_cookie.png';
+// import Cookie from '../../images/dark_chocolate_cookie.png';
 import Star from '../Star';
+import { FilterType } from '../../types/filter';
 
-const CarouselCard: React.FC = () => {
+const CarouselCard: React.FC<FilterType> = ({ type, icon }) => {
   const stars = [false, false, false, false, false];
   const [star] = useState(stars);
   return (
     <div className='rounded-lg text-center bg-grey-50  pb-4'>
-      <img className='m-auto h-56' src={Cookie} />
+      <img className='m-auto h-56' src={icon} />
       <div className='text-pink-250 font-bold text-2xl w-1/2 m-auto'>
-        Chocolate Chip Cookies
+        {type}
       </div>
       <div className='flex justify-between  m-auto w-[50%] my-6'>
         {star.map((x: unknown, index: number) => (

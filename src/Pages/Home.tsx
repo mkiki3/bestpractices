@@ -6,51 +6,29 @@ import 'swiper/swiper-bundle.css';
 import { Swiper as SwiperType } from 'swiper';
 
 import { Button, CarouselCard, Star } from '../Component';
-
-import Banner from '../images/banner.svg';
-import CookieBasket from '../images/cookie_basket.svg';
-import Cookie from '../images/dark_chocolate_cookie.png';
-import LeftArrowCircle from '../images/arrow-left-circle.svg';
-import RightArrowCircle from '../images/arrow-right-circle.svg';
 import Sampler from '../Component/Sampler';
 import Review from '../Component/Review';
 import DownloadApp from '../Component/DownloadApp';
 import Section from '../Component/Section';
 import Info from '../Component/Info';
-import Profile from '../images/profilepic.svg';
+import { buttonFilter, cookieFilterOptions, customerReviews } from '../data';
+import { CookieFilterOption, FilterType } from '../types/filter';
+
+import {
+  Banner,
+  DarkChocolateCookie,
+  LeftArrowCircle,
+  RightArrowCircle,
+  CookieBasket,
+  ProfilePic,
+  Ingredients,
+  ChocolateChipCookie,
+  SugarCookie,
+  HalloweenCookie,
+} from '../images';
 
 const Home: React.FC = () => {
-  interface filterProps {
-    icon: string;
-    type: string;
-  }
-
-  const arr2 = [
-    { icon: '', type: 'Chocolate' },
-    { icon: '', type: 'Sugar' },
-    { icon: '', type: 'Holiday' },
-    { icon: '', type: 'Fruity' },
-  ];
-
-  const reviews = [
-    'Ariene McCoy',
-    'Alexis Jones',
-    'Zack Wilson',
-    'Amber Lee',
-    'Chris Fields',
-  ];
-  const stars = [
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ];
+  const stars: boolean[] = Array(10).fill(false);
   const [star] = useState(stars);
   const swiperRef = useRef<SwiperType>(null);
 
@@ -92,8 +70,10 @@ const Home: React.FC = () => {
               text='Explore menu'
             />
           </div>
+          <div>
+            <img src={Ingredients} className=' absolute -top-6 right-0' />
+          </div>
         </div>
-
         {/**Title */}
         <div className='flex justify-center text-6xl font-medium m-auto w-1/4 mt-12'>
           <span>
@@ -101,42 +81,40 @@ const Home: React.FC = () => {
             <span className='bg-pink-250 ml-1'>easier</span>
           </span>
         </div>
-
         {/**Dummy Text */}
         <div className='flex justify-center text-3xl m-auto mt-10 w-[40%] text-center font-light'>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor
         </div>
-
         {/**Filter Buttons */}
         <div className='m-auto w-[27%] p-3 flex justify-between mb-8 mt-4'>
           <Button
-            icon={<img src={Cookie} className='w-7' />}
+            icon={<img src={DarkChocolateCookie} className='w-7' />}
             iconPosition='left'
             className='bg-white hover:bg-pink-250 rounded-full drop-shadow-2xl text-lg font-medium px-1 pr-3  hover:text-white'
             size='medium'
-            text='Cookie'
+            text='Classic'
           />
           <Button
-            icon={<img src={Cookie} className='w-7' />}
+            icon={<img src={ChocolateChipCookie} className='w-7' />}
             iconPosition='left'
             className='bg-white hover:bg-pink-250 rounded-full drop-shadow-2xl text-lg font-medium px-1 pr-3  hover:text-white'
             size='medium'
-            text='Cookie'
+            text='Spiced'
           />
           <Button
-            icon={<img src={Cookie} className='w-7' />}
+            icon={<img src={SugarCookie} className='w-7' />}
             iconPosition='left'
             className='bg-white hover:bg-pink-250 rounded-full drop-shadow-2xl text-lg font-medium px-1 pr-3  hover:text-white'
             size='medium'
-            text='Cookie'
+            text='Crunch'
           />
           <Button
-            icon={<img src={Cookie} className='w-7' />}
+            icon={<img src={HalloweenCookie} className='w-7' />}
             iconPosition='left'
             className='bg-white hover:bg-pink-250 rounded-full drop-shadow-2xl text-lg font-medium px-1 pr-3  hover:text-white'
             size='medium'
-            text='Cookie'
+            text='Holiday'
           />
         </div>
 
@@ -160,9 +138,9 @@ const Home: React.FC = () => {
             // pagination={{ clickable: true }}
             // onSlideChange={() => console.log('slide change')}
           >
-            {stars.map((x: unknown, index: number) => (
+            {cookieFilterOptions.map((x: CookieFilterOption, index: number) => (
               <SwiperSlide key={index} className='bg-transparent'>
-                <CarouselCard />
+                <CarouselCard type={x.type} icon={x.icon} />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -219,7 +197,7 @@ const Home: React.FC = () => {
             className='bg-pink-250 text-white border  border-pink-250 rounded-2xl shadow-md shadow-grey-500'
           />
         </div>
-        <img className='my-8 mx-auto' src={Cookie} />
+        <img className='my-8 mx-auto' src={DarkChocolateCookie} />
         <div className='mt-8 flex-col mx-auto text-2xl'>
           <div className='flex space-x-1 justify-center'>
             <span>Choosing Food</span>
@@ -237,13 +215,13 @@ const Home: React.FC = () => {
 
         {/**Filter Buttons */}
         <div className='m-auto  mt-5  flex justify-between text-sm '>
-          {arr2.map((x: filterProps, idx: number) => (
+          {buttonFilter.map((x: FilterType, idx: number) => (
             <div
               key={idx}
               className='flex-col items-center justify-center text-center rounded-lg  bg-pink-250 w-1/5 shadow-2xl'
             >
               <img
-                src={Cookie}
+                src={DarkChocolateCookie}
                 className='object-contain w-20 rounded-3xl mt-2 drop-shadow-xl'
               />
               <div className='font-semibold hover:text-white text-xs mt-2 mb-2'>
@@ -254,10 +232,10 @@ const Home: React.FC = () => {
         </div>
 
         <div className='grid grid-cols-2 gap-3'>
-          {arr2.map((x: filterProps, idx: number) => (
+          {buttonFilter.map((x: FilterType, idx: number) => (
             <div key={idx} className='col-span-1'>
               <div className='text-[8px] rounded-lg  bg-grey-50 py-1 mt-8 p-3'>
-                <img className='m-auto ' src={Cookie} />
+                <img className='m-auto ' src={DarkChocolateCookie} />
                 <div className=' text-center text-pink-250 text-lg mx-auto'>
                   Chocolate Chip Cookies
                 </div>
@@ -296,7 +274,7 @@ const Home: React.FC = () => {
 
         <div className='grid grid-cols-4 bg-grey-50 rounded-xl p-4'>
           <div className='col-span-1'>
-            <img src={Profile} className='h-20' />
+            <img src={ProfilePic} className='h-20' />
           </div>
 
           <div className='col-span-3 text-sm'>
@@ -304,7 +282,7 @@ const Home: React.FC = () => {
               Anthony Williams
             </div>
             <div className='flex justify-between w-1/2 my-3'>
-              {reviews.map((x: unknown, index: number) => (
+              {customerReviews.map((x: unknown, index: number) => (
                 <Star key={index} width={18} height={18} />
               ))}
             </div>
@@ -316,13 +294,13 @@ const Home: React.FC = () => {
         </div>
         <div className='grid grid-cols-4 bg-grey-50 rounded-xl mt-3 p-4'>
           <div className='col-span-1'>
-            <img src={Profile} className='h-20' />
+            <img src={ProfilePic} className='h-20' />
           </div>
 
           <div className='col-span-3 text-sm'>
             <div className='text-pink-250 font-bold text-lg'>Cecil Winans</div>
             <div className='flex justify-between w-1/2 my-3'>
-              {reviews.map((x: unknown, index: number) => (
+              {customerReviews.map((x: unknown, index: number) => (
                 <Star key={index} width={18} height={18} />
               ))}
             </div>
