@@ -1,3 +1,11 @@
+import {
+  ChocolateChipCookie,
+  DarkChocolateCookie,
+  HalloweenCookie,
+  SugarCookie,
+} from '../images';
+import { CookieFilterOption } from '../types/filter';
+
 export const users = [
   'Chris',
   'Alex',
@@ -235,4 +243,34 @@ export const comments = [
     review:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.',
   },
+];
+
+export const customerReviews = [
+  'Ariene McCoy',
+  'Alexis Jones',
+  'Zack Wilson',
+  'Amber Lee',
+  'Chris Fields',
+];
+
+export const buttonFilter = [
+  { icon: DarkChocolateCookie, type: 'Classic' },
+  { icon: ChocolateChipCookie, type: 'Spiced' },
+  { icon: SugarCookie, type: 'Crunch' },
+  { icon: HalloweenCookie, type: 'Holiday' },
+];
+
+export const cookieFilterOptions: CookieFilterOption[] = [
+  { icon: SugarCookie, type: 'Chocolate Chip Cookie Cookie' },
+  { icon: SugarCookie, type: 'Sugar Cookie' },
+  { icon: SugarCookie, type: 'Holiday Cookie' },
+  { icon: SugarCookie, type: 'Spiced Cookie' },
+  { icon: SugarCookie, type: 'Chocolate Chip Cookie' },
+  { icon: SugarCookie, type: 'Sugar Cookie' },
+  { icon: SugarCookie, type: 'Holiday Cookie' },
+  { icon: SugarCookie, type: 'Spiced Cookie' },
+  { icon: SugarCookie, type: 'Chocolate Chip Cookie' },
+  { icon: SugarCookie, type: 'Sugar Cookie' },
+  { icon: SugarCookie, type: 'Holiday Cookie' },
+  { icon: SugarCookie, type: 'Spiced Cookie' },
 ];

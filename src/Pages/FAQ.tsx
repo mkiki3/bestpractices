@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 
 import { Disclosure } from '@headlessui/react';
@@ -13,7 +12,6 @@ import { Comments, FAQProp } from '../types/faq';
 import { Button } from '../Component';
 
 const FAQ: React.FC = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selected, setSelected] = useState('General');
   const [formData, setFormData] = useState({
     name: '',
@@ -38,13 +36,13 @@ const FAQ: React.FC = () => {
 
   return (
     <>
-      <div className='flex flex-col  items-center'>
+      <div className='mx-auto'>
         {/**Title */}
-        <div className='md:text-5xl sm:text-3xl pt-20 pb-16'>
-          Frequently <span className='text-pink-250'>Ask Questions</span>
+        <div className='flex justify-center md:text-5xl sm:text-3xl mt-20'>
+          Frequently <span className='text-pink-250 ml-1'>Ask Questions</span>
         </div>
         {/**Menu */}
-        <div className='flex justify-between w-1/4 mb-10 '>
+        <div className='flex justify-between md:w-1/4 md:mx-auto mx-8 md:mt-12 mt-6'>
           {titleItems.map((x: string, idx: number) => (
             <span
               key={idx}
@@ -55,20 +53,20 @@ const FAQ: React.FC = () => {
           ))}
         </div>
       </div>
-
-      <div className='mx-auto w-1/2 rounded-2xl bg-white p-2 '>
+      <div className='md:mx-auto mx-8  md:w-1/2 rounded-2xl bg-white md:p-2'>
         {faq
           .filter((x) => x.type === selected)
           .map((x: FAQProp, index: number) => (
             <Disclosure key={index}>
               {({ open }) => (
                 <>
-                  <Disclosure.Button className='flex w-full justify-between rounded-lg bg-pink-100 px-4 py-6 my-8 text-left text-md font-medium text-purple-900 hover:bg-pink-200 focus:outline-none focus-visible:ring focus-visible:ring-pink-500/75 shadow-xl '>
-                    <span>{x.question}</span>
+                  <Disclosure.Button className='flex w-full  md:justify-between justify-center rounded-lg bg-pink-100 px-4 md:py-6 py-3 my-8 text-left md:text-base text-xs font-medium text-purple-900 hover:bg-pink-200 focus:outline-none focus-visible:ring focus-visible:ring-pink-500/75 shadow-xl '>
+                    <div className=' md:hidden w-[80%] h-12'>{x.question}</div>
+                    <span className='hidden md:block'>{x.question}</span>
                     <ChevronUpIcon
                       className={`${
                         open ? 'rotate-180 transform' : ''
-                      } h-5 w-5 text-black`}
+                      } h-5 w-5 text-black self-start`}
                     />
                   </Disclosure.Button>
                   <Disclosure.Panel className='px-4 pb-2 pt-4 text-sm text-gray-500'>
@@ -79,8 +77,9 @@ const FAQ: React.FC = () => {
             </Disclosure>
           ))}
       </div>
+
       {/**Comment Section */}
-      <div className='bg-[#fff8f9] w-full mx-auto  p-3 mt-20'>
+      <div className='bg-[#fff8f9] w-full mx-auto  p-3 mt-20 md:block hidden'>
         <div className='w-1/2 mx-auto text-pink-600 font-bold text-lg mb-8'>
           Comments
         </div>
@@ -111,30 +110,30 @@ const FAQ: React.FC = () => {
       </div>
 
       {/**Add a Review */}
-      <div className='text-pink-600 mx-auto w-1/2 mt-12 font-semibold text-xl mb-4'>
+      <div className='md:flex justify-center text-pink-600  mt-12 font-semibold md:text-xl text-md md:mb-4 mb-8 hidden'>
         Add a review
       </div>
       <form
         onSubmit={handleSubmit}
-        className='grid grid-cols-2 mx-auto w-1/2 gap-6'
+        className='md:grid grid-cols-2 md:mx-auto md:w-1/2 md:gap-6 gap-4 mx-8 hidden'
       >
         <input
           name='name'
-          className='border rounded-lg p-3'
+          className='border rounded-lg md:p-3 p-2'
           onChange={handleInputChange}
         />
         <input
           name='email'
-          className='border rounded-lg p-3'
+          className='border rounded-lg md:p-3 p-2'
           onChange={handleInputChange}
         />
         <textarea
           name='comment'
-          className='col-span-2 line-clamp-4 border rounded-lg p-3 mt-4 h-52'
+          className='col-span-2 line-clamp-4 border rounded-lg p-3 mt-4 md:h-52'
           onChange={handleInputChange}
         />
         <Button
-          className='col-span-2 flex justify-center mb-8 bg-pink-300 w-1/4 mx-auto p-3 rounded-lg'
+          className='col-span-2 flex justify-center mb-8 bg-pink-300 md:w-1/4 md:mx-auto p-3 rounded-lg'
           text='Submit'
           type='submit'
           variant='secondary'

@@ -3,14 +3,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Nav } from './Component';
 import {
   Home,
-  About,
-  Cookies,
+  Flavors,
   Contact,
   Cart,
   FAQ,
   Product,
   Playground,
-  Playground2,
 } from './Pages';
 
 const RoutesPage: React.FC = () => {
@@ -20,14 +18,12 @@ const RoutesPage: React.FC = () => {
         <Nav />
         <Routes>
           <Route path='/' element={<Home />}></Route>
-          <Route path='/about' element={<About />}></Route>
-          <Route path='/cookies' element={<Cookies />}></Route>
+          <Route path='/flavors' element={<Flavors />}></Route>
           <Route path='/product' element={<Product />}></Route>
           <Route path='/contact' element={<Contact />}></Route>
           <Route path='/cart' element={<Cart />}></Route>
           <Route path='/faq' element={<FAQ />}></Route>
           <Route path='/playground' element={<Playground />}></Route>
-          <Route path='/playground2' element={<Playground2 />}></Route>
         </Routes>
       </>
     </Router>

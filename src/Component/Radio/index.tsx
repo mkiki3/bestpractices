@@ -8,13 +8,13 @@ const plans: Plan[] = [
     name: 'Mobile',
   },
   {
-    name: 'Twitter',
+    name: 'Home',
   },
   {
     name: 'Email',
   },
   {
-    name: 'Instagram',
+    name: 'Twitter',
   },
 ];
 
@@ -22,9 +22,9 @@ const Radio: React.FC<RadioProp> = ({ className }) => {
   const [selected, setSelected] = useState<Plan>(plans[0]);
 
   return (
-    <RadioGroup value={selected} onChange={setSelected} className='col-span-2'>
+    <RadioGroup value={selected} onChange={setSelected} className=''>
       <RadioGroup.Label className='sr-only'>preferred contact</RadioGroup.Label>
-      <div className='flex justify-between'>
+      <div className='flex justify-between '>
         {plans.map((plan) => (
           <RadioGroup.Option key={plan.name} value={plan}>
             {({ checked }) => (
@@ -37,7 +37,7 @@ const Radio: React.FC<RadioProp> = ({ className }) => {
                     })}
                   ></div>
                 </div>
-                <div className='flex justify-center items-center text-normal'>
+                <div className='flex justify-center items-center text-sm mr-3'>
                   {plan.name}
                 </div>
               </div>

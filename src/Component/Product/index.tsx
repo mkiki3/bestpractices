@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Cookie from '../../images/chocolate_chip_cookie.svg';
 import Button from '../Button';
 import Star from '../Star';
+import QtyPicker from '../QtyPicker';
 
 const Product: React.FC = () => {
   const stars = [false, false, false, false, false];
@@ -35,7 +36,11 @@ const Product: React.FC = () => {
           <div className='ml-2 text-grey-700'>(12)</div>
         </div>
         <div className='flex my-3'>
-          <div>Quantity</div>
+          <div className='flex justify-between w-1/2'>
+            <div>Quantity</div>
+            <QtyPicker />
+          </div>
+
           <div className='hidden'>
             <div className=''>
               <Button text='-' className='border flex justify-center w-5' />

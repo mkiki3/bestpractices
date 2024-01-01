@@ -12,13 +12,11 @@ const Nav: React.FC = () => {
 
   const navItems = [
     { path: '/', name: 'Home' },
-    { path: '/about', name: 'About' },
     { path: '/contact', name: 'Contact' },
-    { path: '/cookies', name: 'Cookies' },
+    { path: '/flavors', name: 'Flavors' },
     { path: '/cart', name: 'Cart' },
     { path: '/faq', name: 'FAQ' },
     { path: '/playground', name: 'Playground' },
-    { path: '/playground2', name: 'Playground2' },
   ];
   return (
     <div className='flex justify-start'>
