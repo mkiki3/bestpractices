@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 
 import classNames from 'classnames';
@@ -13,10 +14,10 @@ const CarouselCard: React.FC<FilterType> = ({ type, icon }) => {
   return (
     <div className='rounded-lg text-center bg-grey-50  pb-4'>
       <img className='m-auto h-56' src={icon} />
-      <div className='text-pink-250 font-bold text-2xl w-1/2 m-auto'>
+      <div className='flex justify-center text-pink-250 font-bold  mx-12  text-2xl text-wrap overflow-x-auto h-16'>
         {type}
       </div>
-      <div className='flex justify-between  m-auto w-[50%] my-6'>
+      <div className='flex justify-between  m-auto w-[50%] mt-3 mb-6'>
         {star.map((x: unknown, index: number) => (
           <div key={index}>
             <Star width={24} height={24} />

@@ -261,16 +261,16 @@ export const buttonFilter = [
 ];
 
 export const cookieFilterOptions: CookieFilterOption[] = [
-  { icon: SugarCookie, type: 'ChocolateChipCookie' },
-  { icon: SugarCookie, type: 'Sugar' },
-  { icon: SugarCookie, type: 'Holiday' },
-  { icon: SugarCookie, type: 'Spiced' },
-  { icon: SugarCookie, type: 'ChocolateChipCookie' },
-  { icon: SugarCookie, type: 'Sugar' },
-  { icon: SugarCookie, type: 'Holiday' },
-  { icon: SugarCookie, type: 'Spiced' },
-  { icon: SugarCookie, type: 'ChocolateChipCookie' },
-  { icon: SugarCookie, type: 'Sugar' },
-  { icon: SugarCookie, type: 'Holiday' },
-  { icon: SugarCookie, type: 'Spiced' },
+  { icon: SugarCookie, type: 'Chocolate Chip Cookie Cookie' },
+  { icon: SugarCookie, type: 'Sugar Cookie' },
+  { icon: SugarCookie, type: 'Holiday Cookie' },
+  { icon: SugarCookie, type: 'Spiced Cookie' },
+  { icon: SugarCookie, type: 'Chocolate Chip Cookie' },
+  { icon: SugarCookie, type: 'Sugar Cookie' },
+  { icon: SugarCookie, type: 'Holiday Cookie' },
+  { icon: SugarCookie, type: 'Spiced Cookie' },
+  { icon: SugarCookie, type: 'Chocolate Chip Cookie' },
+  { icon: SugarCookie, type: 'Sugar Cookie' },
+  { icon: SugarCookie, type: 'Holiday Cookie' },
+  { icon: SugarCookie, type: 'Spiced Cookie' },
 ];
